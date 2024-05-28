@@ -1,0 +1,119 @@
+.footer_section{
+    background: 
+    linear-gradient(rgba(24, 26, 32, 0.8), rgba(24, 26, 32, 0.8)),
+    url('../../../assets/images/background.png');
+    background-size: cover;
+    background-position: center center;
+    padding: 2.4rem 0;
+}
+
+.footer{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    color: #fff;
+}
+
+.footer_logo{
+    height: 8rem;
+}
+
+.footer_description{
+    font-size: 1.4rem;
+    line-height: 1.6;
+    font-weight: 400;
+    padding: 2rem 0;
+    width: 90%;
+}
+
+.footer_title{
+    font-size: 1.6rem;
+}
+
+.footer_apps{
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.6rem;
+    margin-bottom: 4rem;
+}
+
+.footer_app{
+    background-color: #454343;
+    width: 14rem;
+    padding: 1rem 1.4rem;
+    border-radius: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer_app_logo{
+    height: 1.8rem;
+}
+
+.footer_app_title{
+    font-size: 1rem;
+    font-weight: 100;
+    line-height: 1.6;
+}
+
+.footer_app_description{
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.footer_socials{
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.8rem;
+}
+
+.footer_social{
+    height: 1.4rem;
+}
+
+.footer_nav{
+    list-style: none;
+    font-size: 1.4rem;
+    line-height: 2;
+    color: #BEBDBD;
+    font-weight: 100;
+    margin-top: 2rem;
+    margin-bottom: 6rem;
+}
+
+.footer_nav li{
+    cursor: pointer;
+}
+
+.footer_contact_title{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #BEBDBD;
+    line-height: 1.6;
+}
+
+.footer_contact_number{
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.6;
+}
+
+.copyright_section{
+    background-color: #181A20;
+    color: #BEBDBD;
+}
+
+.copyright{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.copyright ul{
+    list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4.8rem;
+}

@@ -1,0 +1,39 @@
+.card {
+    position: relative;
+    min-height: 45rem;
+    text-align: left;
+    box-shadow: 2px 2px 28.9px 9px #0000001A;
+
+}
+
+.card_logo {
+    height: 24rem;
+    position: relative;
+}
+
+.card_image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+.card_body {
+    padding: 2rem;
+}
+
+.card_title {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.card_description {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+

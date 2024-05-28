@@ -1,0 +1,84 @@
+.welcome_section{
+    padding-top: 10rem;
+    padding-bottom: 4rem;
+}
+
+.grid_card{
+    margin-top: 6rem;
+}
+
+.restaurant_menu{
+    padding: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    background-color: var(--primary-light-box-color);
+}
+
+.menu_card{
+    background-color: rgba(1, 120, 54, 0.06);
+    padding: 2rem;
+    min-width: 25rem;
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    border-radius: var(--border-radius);
+}
+
+.menu_card img{
+    height: 4rem;
+    text-align: left;
+}
+
+.menu_card_content{
+    text-align: left;
+}
+
+.menu_card_content h1{
+    font-style: italic;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.menu_card_content p{
+    font-style: italic;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-dark-color);
+}
+
+.make_reservation{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    padding: 1rem 4rem;
+    background-color: var(--primary-dark-color);
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    margin-bottom: 1rem;
+}
+
+.make_reservation h1{
+    font-size: 1.8rem;
+}
+
+.make_reservation_btn {
+    padding: 0.8rem 1.6rem;
+    border: none;
+    border-radius: 0;
+    font-size: 1.4rem;
+    cursor: pointer;
+    background-color: #fff;
+    color: var(--primary-color);
+    transition: background-color 0.3s ease;
+  }
+
+  .important_desc{
+    font-size: 1.4rem;
+    padding: 2rem 0;
+  }
+  
+ 

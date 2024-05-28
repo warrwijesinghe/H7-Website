@@ -1,0 +1,14 @@
+/* variables.css */
+:root {
+    --background-color: #ffffff;
+    --text-color: #000;
+    --muted-text-color: #757575;
+    --primary-color: #07843A;
+    --primary-dark-color: #017836;
+    --primary-light-color: #34684E;
+    --primary-light-box-color: #F3FFF8;
+    --secondary-color: #343a40;
+    --border-radius: 0.4rem;
+  }
+
+  

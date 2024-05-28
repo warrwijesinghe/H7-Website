@@ -1,0 +1,33 @@
+.intro_ex_section {
+    padding-top: 10rem;
+    padding-bottom: 2rem;
+}
+
+.tours_section {
+    padding: 4rem 0;
+}
+
+.offer_section {
+    padding-bottom: 4rem;
+}
+
+.visit_section {
+    background-image: url('../../../assets/images/background.png');
+    background-size: cover;
+    background-position: center center;
+}
+
+.visit_card {
+    width: 100%;
+    padding: 6rem;
+    margin: 3rem 0;
+    background-color: rgba(243, 255, 248, 0.4);
+    border-radius: var(--border-radius);
+}
+
+.visit_card_description {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    width: 80%;
+    margin: 0 auto;
+}

@@ -1,0 +1,23 @@
+.welcome_section{
+    padding-top: 10rem;
+}
+
+.rooms_section{
+    background-color: var(--primary-light-box-color);
+    padding: 2rem 0;
+}
+
+.room_title{
+    padding: 0.6rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.2rem solid var(--primary-color);
+    margin-bottom: 1.4rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.suit_rooms{
+    margin-bottom: 2rem;
+}

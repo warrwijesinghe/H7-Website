@@ -1,0 +1,79 @@
+.form{
+    text-align: left;
+    padding: 0 4rem;
+}
+
+.form_group{
+    width: 100%;
+    display: grid;
+    margin-bottom: 4rem;
+}
+
+.form_label{
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+}
+
+.form_input {
+    padding: 1rem 2.2rem;
+    border: none;
+    border-bottom: 1px solid var(--primary-color);
+    border-radius: 0;
+    font-size: 1.4rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    background: transparent;
+  }
+  
+  .form_input:focus {
+    border-color: var(--primary-dark-color);
+    outline: none;
+  }
+
+  .form_textArea {
+    padding: 1rem 2.2rem;
+    border: none;
+    border-bottom: 1px solid var(--primary-color);
+    border-radius: 0;
+    font-size: 1.4rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    background: transparent;
+  }
+  
+  .form_textArea:focus {
+    border-color: var(--primary-dark-color);
+    outline: none;
+  }
+
+  .form_combo {
+    padding: 1rem 2.2rem;
+    border: none;
+    border-bottom: 1px solid var(--primary-color);
+    border-radius: 0;
+    font-size: 1.4rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    background: transparent;
+  }
+  
+  .form_combo:focus {
+    border-color: var(--primary-dark-color);
+    outline: none;
+  }
+
+  .form_combo::placeholder{
+    background-color: var(--primary-light-color);
+  }
+
+  .form_submit{
+    display: flex;
+    justify-content: center;
+  }
+
+  .submit{
+    width: 20rem;
+  }

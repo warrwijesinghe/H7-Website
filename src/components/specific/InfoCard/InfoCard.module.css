@@ -1,0 +1,75 @@
+.info_card{
+    height: 42rem;
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.info_card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info_card_content{
+    background-color: rgba(255, 255, 255, 0.72);
+    position: absolute;
+    bottom: 6rem;
+    left: 2.6rem;
+    right: 2.6rem;
+    text-align: left;
+    padding: 3rem;
+    border-radius: var(--border-radius);
+}
+
+.info_card_count {
+    font-size: 1.2rem;
+    font-weight: 400;
+    position: relative;
+    margin-bottom: 0.6rem;
+}
+
+.info_card_count::after {
+    content: '';
+    display: block;
+    width: 20%;
+    height: 0.01rem;
+    background-color: var(--muted-text-color);
+    position: absolute;
+    top: 55%;
+    left: 2rem;
+    transform: translateY(-50%);
+}
+
+.info_card_title{
+    font-size: 2.4rem;
+    color: var(--primary-color);
+    margin-bottom: 1.8rem;
+}
+
+.info_card_desc{
+    font-size: 1.6rem;
+    line-height: 1.6;
+}
+
+.slide_button {
+    padding: 0.8rem 0.8rem;
+    border: none;
+    border-radius: 0;
+    font-size: 0.4rem;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: #fff;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: -1.4rem;
+    right: -1rem;
+}
+
+.slide_button img {
+    height: 1.4rem;
+}
+
+.slide_button:hover {
+    background-color: var(--primary-dark-color);
+}

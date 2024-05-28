@@ -1,0 +1,117 @@
+.contact_component{
+    padding-bottom: 4rem;
+}
+.welcome_section {
+    padding-top: 10rem;
+    padding-bottom: 0;
+}
+.map{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20rem;
+}
+
+.iframe_map{
+    width: 100%;
+    height: 40rem;
+    border: none;
+    border-radius: 1.8rem;
+}
+
+.contact_detail{
+    padding: 2rem 0;
+    background-color: var(--primary-light-box-color);
+    width: 90%;
+    position: absolute;
+    bottom: -24rem;
+    border-radius: var(--border-radius);
+    
+}
+
+.contact_detail_title{
+    font-size: 2.6rem;
+    margin-bottom: 2rem;
+}
+
+.contact_detail_subtitle{
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.contact_detail_desc{
+    font-size: 1.2rem;
+    line-height: 1.4;
+    width: 20%;
+    margin: 0 auto;
+    color: var(--primary-dark-color);
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.contact_groups{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+    width: 60rem;
+    margin: 0 auto;
+    padding-top: 4rem;
+}
+
+.contact_group{
+    padding: 2rem;
+    background-color: rgba(1, 120, 54, 0.06);
+    border-radius: var(--border-radius);
+}
+
+.contact_group .contact_detail_desc{
+    width: 100%;
+    margin-bottom: 0.6rem;
+}
+
+.hotels_section{
+    padding-top: 4rem;
+}
+
+.hotel{
+    box-shadow: 2px 2px 97.1px 0px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    height: 26rem;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.hotel img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hotel_content{
+    text-align: center;
+    padding: 2rem;
+}
+
+.hotel_title{
+    font-size: 3.4rem;
+    margin-bottom: 2rem;
+}
+
+.hotel_desc{
+    font-size: 1.8rem;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.contact_form_section{
+    padding-top: 4rem;
+}
+
+.contact_form{
+    background-color: var(--primary-light-box-color);
+    padding: 4rem;
+    border-radius: var(--border-radius);
+}
+

@@ -1,0 +1,78 @@
+.card {
+    position: relative;
+    min-height: 45rem;
+    text-align: center;
+    box-shadow: 2px 2px 28.9px 9px #0000001A;
+
+}
+
+.card_logo {
+    height: 24rem;
+    position: relative;
+}
+
+.card_image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+.card_brand_logo {
+    position: absolute;
+    bottom: -5.6rem;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    height: 6rem;
+}
+
+.card_body {
+    padding: 4.6rem 2rem 2rem 2rem;
+}
+
+.card_title {
+    font-size: 2.4rem;
+}
+
+.card_subtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+}
+
+.card_description {
+    font-size: 1.2rem;
+    line-height: 1.7;
+}
+
+.card_button{
+    padding: 2rem 0;
+}
+
+.card_tag{
+    padding: 0.6rem 1.8rem;
+    font-size: 1.8rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    width: 42%;
+    position: absolute;
+    right: -1rem;
+    top: 2rem;
+    border-radius: var(--border-radius);
+}
+
+.card_tag::after{
+    content: '';
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--primary-color);
+    display: inline-block;
+    position: absolute;
+    right: 0.6rem;
+    bottom: -6px;
+    z-index: -1;
+    transform: rotate(60deg);
+}

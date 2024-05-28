@@ -1,0 +1,212 @@
+
+.welcome_section{
+    padding-top: 10rem;
+    padding-bottom: 1rem;
+}
+
+.welcome_grid{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+
+}
+
+.welcome_description{
+    font-size: 1.8rem;
+    line-height: 1.6;
+    color: var(--secondary-color);
+    
+}
+
+.welcome_content{
+    width: 50%;
+    
+}
+
+.welcome_image{
+    height: 40rem;
+    width: 50%;
+    
+}
+
+.welcome_image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1.6rem;
+}
+
+.welcome_gallery{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+}
+
+.left_gallery img{
+    height: 35rem;
+    margin-bottom: 1rem;
+}
+
+.right_gallery img{
+    height: 45rem;
+    margin-bottom: 1rem;
+}
+
+.right_gallery img:first-child{
+    height: 25rem;
+    margin-bottom: 1rem;
+}
+
+
+
+.gallery_img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.book_info_section{
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+.dining_banner{
+    height: 40rem;
+}
+
+.dining_banner img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.dining_section{
+    padding-bottom: 4rem;
+}
+
+.dining_gallery{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+    margin-top: 2rem;
+}
+
+.dining_gallery_image{
+    height: 20rem;
+}
+
+.dining_gallery_image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+
+
+.experience_grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding-top: 4rem;
+}
+
+
+
+.experience_grid img{
+    width: 100%;
+    height: 28rem;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    
+}
+
+.experience_grid img:last-child{
+    width: 100%;
+    height: 46rem;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.experience_grid .welcome_description{
+    display: flex;
+    align-self: center;
+}
+
+.experience_slider{
+    position: relative;
+    height: 32rem;
+    display: flex;
+    align-items: center;
+    margin: 4rem 0;
+}
+
+.experience_slider img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.slide_next_btn {
+    width: 2.8rem;
+    height: 2.8rem;
+    border: none;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.16);
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    right: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide_prev_btn {
+    width: 2.8rem;
+    height: 2.8rem;
+    border: none;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.16);
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide_next_btn img {
+    height: 1.2rem;
+}
+
+.slide_prev_btn img {
+    height: 1.2rem;
+}
+
+
+
+
+
+.book_info_title {
+    font-size: 3.3rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    width: 60%;
+}
+
+.book_info_description {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    width: 90%;
+}
+
+.offer_section {
+    padding-bottom: 4rem;
+}

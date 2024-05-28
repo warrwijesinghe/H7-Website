@@ -1,0 +1,44 @@
+.faq_title{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.faq_title h1{
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+}
+
+.faq_title h1::before{
+    margin-left: 1rem;
+    content: '';
+    display: inline-block;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background-color: #000;
+    position: absolute;
+    margin-top: 0.4rem;
+    left: -1rem;
+}
+
+.faq_title img{
+    height: 2rem;
+    cursor: pointer;
+}
+
+.faq_value{
+    padding: 1rem 1.4rem;
+    background-color: rgba(1, 120, 54, 0.06);
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+    transition: all 0.4s;
+}
+
+.faq_description{
+    font-size: 1.4rem;
+}

@@ -1,0 +1,218 @@
+.mission_section {
+    padding-top: 10rem;
+    padding-bottom: 4rem;
+}
+
+.vision_section {
+    padding-bottom: 4rem;
+}
+
+.about_card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    min-height: 40rem;
+    overflow: hidden;
+}
+
+.about_card_image {
+    height: 40rem;
+    width: 30%;
+    position: absolute;
+    bottom: 0;
+}
+
+.right_image{
+    right: 0;
+}
+
+.left_image{
+    left: 0;
+}
+
+.about_card_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.about_card_content {
+    position: absolute;
+    z-index: -1;
+    width: 75%;
+    background-color: rgba(166, 248, 202, 0.25);
+    border-radius: var(--border-radius);
+}
+
+.left_content{
+    left: 0;
+    padding: 6rem 14rem 6rem 6rem;
+}
+
+.right_content{
+    right: 0;
+    padding: 6rem 6rem 6rem 12rem; 
+}
+
+.about_card_title {
+    font-size: 3.6rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.about_card_description {
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.founders_section{
+    background-color: var(--primary-light-box-color);
+    padding: 2rem 0;
+}
+
+.founders{
+    margin: 0 auto;
+    width: 70%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    padding-bottom: 1.4rem;
+}
+
+.left_item{
+    height: 60rem;
+    width: 100%;
+}
+
+.left_founder{
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.founder{
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.founder_img{
+    width: 14.6rem;
+    height: 14.6rem;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.founder_content{
+    padding-top: 6rem;
+}
+
+.founder_title{
+    font-size: 2rem;
+    margin-top: 1rem;
+    font-weight: 00;
+}
+
+.founder_subtitle{
+    font-size: 1.4rem;
+    color: var(--muted-text-color);
+}
+
+.founder_name{
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.director{
+    padding: 4rem 0;
+    text-align: left;
+    border-top: 0.2rem solid var(--primary-color);
+    width: 90%;
+    margin: 0 auto;
+}
+
+.director_content{
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.director_img{
+    width: 22rem;
+    height: 22rem;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.vice_name{
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    font-weight: 600;
+}
+
+.normal_title{
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    line-height: 1.6;
+}
+
+.normal_title span{
+    font-weight: 600;
+}
+
+.director_description{
+    font-size: 1.8rem;
+    line-height: 1.6;
+    color: var(--secondary-color);
+    margin: 0 auto;
+}
+
+
+
+.hotels_section {
+    background-image: url('../../assets/images/home-hotels.png');
+    background-size: cover;
+    background-position: center center;
+    margin-bottom: 4rem;
+}
+
+.hotel_list {
+    background: linear-gradient(176.69deg, #FFFFFF 3.74%, rgba(255, 255, 255, 0.808155) 19.18%, rgba(255, 255, 255, 0.97) 71.47%, rgba(255, 255, 255, 0.36) 93.39%, 1);
+}
+
+.mice_section{
+    background-image: url('../../assets/images/mice.png');
+    background-size: cover;
+    background-position: center center;
+    margin-bottom: 4rem;
+}
+
+.mice_content{
+    background: 
+    linear-gradient(rgba(24, 26, 32, 0.8), rgba(24, 26, 32, 0.8)),
+    url('../../assets/images/restaurent.png');
+    background-size: cover;
+    background-position: center center;
+    padding: 6rem;
+    margin-bottom: 4rem;
+    color: #fff;
+}
+
+.mice_title{
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.mice_desc{
+    font-size: 1.2rem;
+    line-height: 1.6;
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}

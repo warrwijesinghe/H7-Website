@@ -1,0 +1,13 @@
+.welcome_section {
+    padding-top: 10rem;
+    padding-bottom: 0;
+}
+
+.faq_section{
+    padding-bottom: 4rem;
+}
+
+.faq{
+    background-color: var(--primary-light-box-color);
+    padding: 6rem;
+}

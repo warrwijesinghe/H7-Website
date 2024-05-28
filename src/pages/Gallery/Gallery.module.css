@@ -1,0 +1,168 @@
+.hero_section {
+    height: 80vh;
+    position: relative;
+    background-image: url('../../assets/images/background.png');
+    background-size: cover;
+    background-position: center center;
+}
+
+.logo {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.logo img {
+    height: 6rem;
+}
+
+.logo p {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #fff;
+    padding: 1rem;
+}
+
+.gallery_welcome_section{
+    padding-top: 10rem;
+    padding-bottom: 2rem;
+}
+
+.gallery_grid_section{
+    padding: 2rem 0;
+}
+
+.gallery_grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 25rem 25rem;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.gallery_grid_Item_1{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    overflow: hidden;
+}
+
+.gallery_grid_Item_img{
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery_grid_Item_img .gallery_grid_play{
+    margin-bottom: 9rem;
+}
+
+.gallery_grid_Item_2{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery_grid_Item_3{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery_grid_img{
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ 
+}
+
+.gallery_grid_play{
+    position: absolute;
+    height: 10rem;
+}
+
+.gallery_grid_title{
+    font-size: 2.8rem;
+    padding: 2rem 0;
+}
+
+.stay_section {
+    padding: 4rem 0;
+}
+
+.stay_card_title {
+    font-size: 3.3rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    width: 60%;
+}
+
+.stay_card_description {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+
+
+.stay_form_grid {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    margin-bottom: 2.8rem;
+}
+
+.stay_social {
+    display: flex;
+    gap: 2.8rem;
+}
+
+.stay_social_ico {
+    width: 4rem;
+    height: 4rem;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    position: relative;
+}
+
+.stay_social_ico img {
+    height: 1.6rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.offer_section {
+    padding-bottom: 4rem;
+}
+
+.hotels_section {
+    height: 100%;
+    background-image: url('../../assets/images/home-hotels.png');
+    background-size: cover;
+    background-position: center center;
+    margin-bottom: 4rem;
+}
+
+.hotel_list {
+    background: linear-gradient(176.69deg, #FFFFFF 3.74%, rgba(255, 255, 255, 0.808155) 19.18%, rgba(255, 255, 255, 0.97) 71.47%, rgba(255, 255, 255, 0.36) 93.39%, 1);
+
+}
