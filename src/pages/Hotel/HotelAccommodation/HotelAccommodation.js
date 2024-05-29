@@ -62,6 +62,7 @@ const HotelAccommodation = () => {
                     cardImage="https://picsum.photos/400"
                     title="Double Dulx Room 01"
                     room={104}
+                    
                 />
                 <RoomCard 
                     cardImage="https://picsum.photos/400"

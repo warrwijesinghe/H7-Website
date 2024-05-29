@@ -73,3 +73,9 @@
 .slide_button:hover {
     background-color: var(--primary-dark-color);
 }
+
+@media (max-width: 768px) {
+    .info_card {
+        min-width: 28rem;
+    }
+}

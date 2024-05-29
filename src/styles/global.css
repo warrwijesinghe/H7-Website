@@ -8,6 +8,7 @@
 html {
     font-size: 62.5%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -15,6 +16,7 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
+    overflow-x: hidden;
 }
 
 a {
@@ -22,7 +24,7 @@ a {
     color: inherit;
 }
 
-.text-center{
+.text-center {
     text-align: center;
 }
 
@@ -74,7 +76,7 @@ button {
     letter-spacing: 0.75px;
 }
 
-.description{
+.description {
     font-size: 1.8rem;
     line-height: 1.6;
     width: 90%;
@@ -82,7 +84,7 @@ button {
     margin: 0 auto;
 }
 
-.read_more{
+.read_more {
     padding: 2rem 0;
     font-size: 1.8rem;
     text-align: center;
@@ -93,20 +95,33 @@ button {
     display: grid;
     row-gap: 6.4rem;
     column-gap: 6.4rem;
-  }
+}
 
-  .col-3 {
+.col-3 {
     grid-template-columns: repeat(3, 1fr);
-  }
+}
 
-  .col-2 {
+.col-2 {
     grid-template-columns: repeat(2, 1fr);
-  }
+}
 
-  .mb-lg{
+.mb-lg {
     margin-bottom: 6rem;
-  }
+}
 
-  .mb-sm{
+.mb-sm {
     margin-bottom: 2rem;
-  }
+}
+
+@media (max-width: 768px) {
+    html {
+        /* 8px / 16 = 0.5 = 50% */
+        font-size: 50%;
+    }
+
+    .heading-primary,
+    .heading-secondary,
+    .heading-tertiary {
+        width: 100%;
+    }
+}

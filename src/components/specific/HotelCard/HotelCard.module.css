@@ -124,3 +124,29 @@
     position: absolute;
     border: 1px solid var(--primary-color);
 }
+
+@media (max-width: 768px) {
+    .hotel_card_gallery {
+        display: none;
+    }
+
+    .hotel_card_image{
+        width: 100%;
+        top: 0;
+        height: 32rem;
+    }
+
+    .hotel_card_content{
+        width: 95%;
+        margin: 0 auto;
+        top: 30rem;
+        bottom: 0;
+        height: 36rem;
+        padding: 6rem;
+        margin-right: 2.5%;
+    }
+
+    .hotel_card{
+      min-height: 68rem;
+    }
+}

@@ -77,3 +77,9 @@
 .offer_card_button{
     width: 100%;
 }
+
+@media (max-width: 768px) {
+    .offer_card {
+        min-width: 32rem;
+    }
+}

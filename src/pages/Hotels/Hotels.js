@@ -113,7 +113,7 @@ const Hotels = () => {
           <span className="subheading">Haven Seven Hotels</span>
           <h1 className="heading-primary mb-lg">Why Stay With Us</h1>
 
-          <div className="grid col-3">
+          <div className={`grid col-3 ${styles.mobile_grid}`}>
             <InfoCard
               logo="https://picsum.photos/400"
               count="01"
@@ -158,7 +158,7 @@ const Hotels = () => {
           <span className="subheading">Heaven Seven Hotel</span>
           <h1 className="heading-primary mb-lg">Special Offers</h1>
 
-          <div className="grid col-3">
+          <div className={`grid col-3 ${styles.mobile_grid}`}>
             <OfferCard
               cardImage="https://picsum.photos/400"
               title="A Limited Time Hikkaduwa"

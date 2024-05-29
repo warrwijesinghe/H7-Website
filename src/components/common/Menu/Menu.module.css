@@ -1,0 +1,54 @@
+.menu{
+ position: absolute;
+ left: -32rem;
+ top: 0;
+ border-radius: 0.6rem;
+ width: 32rem;
+ background-color: #fff;
+ z-index: 2000;
+ transition: left 0.5s ease;
+}
+
+.menu_open {
+    left: 0; /* Move into view */
+  }
+
+.menu_list{
+    list-style: none;
+    position: relative;
+    padding: 4rem;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 5000;
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.8);
+    overflow-x: hidden;
+    transition: opacity 0.5s ease;
+  }
+
+.menu_list li{
+    font-size: 1.8rem;
+    line-height: 1.6;
+    margin-bottom: 1.4rem;
+    text-decoration: underline;
+    text-underline-offset: 1rem;
+    text-decoration-color: var(--primary-color);
+    position: relative;
+    cursor: pointer;
+}
+
+
+
+.close_ico{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    height: 1.6rem;
+    cursor: pointer;
+}

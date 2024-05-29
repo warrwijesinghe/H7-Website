@@ -106,3 +106,9 @@
 .offer_section {
     padding-bottom: 4rem;
 }
+
+@media (max-width: 768px) {
+    .mobile_grid{
+        grid-template-columns: 1fr;
+    }
+}

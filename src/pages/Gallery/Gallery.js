@@ -13,20 +13,12 @@ import youtubeIco from "../../assets/icons/youtube-ico.svg";
 import tweetIco from "../../assets/icons/tweet-ico.svg";
 import playIco from "../../assets/icons/video-ico.svg";
 import Card from "../../components/specific/Card/Card";
-import CheckRateCard from "../../components/specific/CheckRateCard/CheckRateCard";
+import HeroSection from "../../components/common/HeroSection/HeroSection";
 
 const Gallery = () => {
   return (
     <div>
-      <section className={styles.hero_section}>
-        <div className={styles.logo}>
-          <div>
-            <img src={logo} alt="Haven Seven Hotels" />
-            <p>Heaven Seven Hotel</p>
-          </div>
-        </div>
-        <CheckRateCard />
-      </section>
+      <HeroSection />
 
       <section className={styles.gallery_welcome_section}>
         <div className="container text-center">
@@ -103,7 +95,7 @@ const Gallery = () => {
               Life is short, travel often
             </h1>
 
-            <div className="grid col-3">
+            <div className={`grid col-3 ${styles.mobile_grid}`}>
               <Card
                 logo={logo}
                 cardImage="https://picsum.photos/400"

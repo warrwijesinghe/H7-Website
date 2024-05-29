@@ -3,7 +3,6 @@ import styles from "./Home.module.css";
 import logo from "../../assets/images/logo-ne.png";
 import map from "../../assets/images/Map.png";
 import playIco from "../../assets/icons/video-ico.svg";
-import CheckRateCard from "../../components/specific/CheckRateCard/CheckRateCard";
 import Card from "../../components/specific/Card/Card";
 import Button from "../../components/common/Button/Button";
 import SliderLeft from "../../components/specific/SliderLeft/SliderLeft";
@@ -11,28 +10,17 @@ import OfferCard from "../../components/specific/OfferCard/OfferCard";
 import EventCard from "../../components/specific/EventCard/EventCard";
 import Partners from "../../components/specific/Partners/Partners";
 
-import facebookIco from "../../assets/icons/facebook-ico.svg";
-import linkedinIco from "../../assets/icons/linkedin-ico.svg";
-import instragramIco from "../../assets/icons/instragram-ico.svg";
-import youtubeIco from "../../assets/icons/youtube-ico.svg";
+
 import arrowHeadRightIco from "../../assets/icons/arrow-head-right-ico.svg";
 import arrowHeadLeftIco from "../../assets/icons/arrow-head-left-ico.svg";
+import StayUs from "../../components/common/StayUs/StayUs";
 
-import tweetIco from "../../assets/icons/tweet-ico.svg";
-import Input from "../../components/common/Input/Input";
 import { Link } from "react-router-dom";
+import HeroSection from "../../components/common/HeroSection/HeroSection";
 const Home = () => {
   return (
     <div>
-      <section className={styles.hero_section}>
-        <div className={styles.logo}>
-          <div>
-            <img src={logo} alt="Haven Seven Hotels" />
-            <p>Heaven Seven Hotel</p>
-          </div>
-        </div>
-        <CheckRateCard />
-      </section>
+      <HeroSection />
       <div className="container">
         <section className={`text-center ${styles.welcome_section}`}>
           <span className="subheading">Welcome To Haven Seven Hotels</span>
@@ -51,6 +39,7 @@ const Home = () => {
 
           <img
             src={map}
+            loading="lazy"
             alt="Tourism map sri lanka"
             className={styles.welcome_img}
           />
@@ -96,7 +85,7 @@ const Home = () => {
               Life is short, travel often
             </h1>
 
-            <div className="grid col-3">
+            <div className={`grid col-3 ${styles.mobile_grid}`}>
               <Card
                 logo={logo}
                 cardImage="https://picsum.photos/400"
@@ -146,7 +135,7 @@ const Home = () => {
           <span className="subheading">Heaven Seven Hotel</span>
           <h1 className="heading-primary mb-lg">Special Offers</h1>
 
-          <div className="grid col-3">
+          <div className={`grid col-3 ${styles.mobile_grid}`}>
             <OfferCard
               cardImage="https://picsum.photos/400"
               title="A Limited Time Hikkaduwa"
@@ -274,43 +263,7 @@ const Home = () => {
         </div>
       </section>
       <Partners />
-      <section className={styles.stay_section}>
-        <div className="container">
-          <EventCard logo="https://picsum.photos/800" isLeft={false}>
-            <h1 className={styles.stay_card_title}>Stay with Us</h1>
-            <p className={styles.stay_card_description}>
-              Stay connected and informed by following us on social media and
-              signing up for our newsletter to receive the latest news, offers,
-              and insights directly from Heaven Seven Hotels.
-            </p>
-
-            <div className={styles.stay_form_grid}>
-              <Input type="text" placeholder="RECEIVE NEWSLETTERS AND OFFERS" />
-              <Button type="button" variant="primary">
-                Submit
-              </Button>
-            </div>
-
-            <div className={styles.stay_social}>
-              <div className={styles.stay_social_ico}>
-                <img src={facebookIco} alt="facebook" />
-              </div>
-              <div className={styles.stay_social_ico}>
-                <img src={linkedinIco} alt="linkin" />
-              </div>
-              <div className={styles.stay_social_ico}>
-                <img src={instragramIco} alt="instagram" />
-              </div>
-              <div className={styles.stay_social_ico}>
-                <img src={youtubeIco} alt="youtube" />
-              </div>
-              <div className={styles.stay_social_ico}>
-                <img src={tweetIco} alt="tweet" />
-              </div>
-            </div>
-          </EventCard>
-        </div>
-      </section>
+      <StayUs />
     </div>
   );
 };

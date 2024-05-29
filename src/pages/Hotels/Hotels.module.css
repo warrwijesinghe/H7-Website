@@ -34,7 +34,8 @@
 
 .intro_img{
     padding: 2rem 0;
-    height: 56rem;
+    height: auto;
+    width: 100%;
 }
 
 .hotels_ex_section{
@@ -117,4 +118,11 @@
     line-height: 1.6;
     margin-bottom: 2rem;
     width: 90%;
+}
+
+@media (max-width: 768px) {
+    .mobile_grid{
+        overflow-x: scroll;
+        padding-bottom: 2rem;
+    }
 }

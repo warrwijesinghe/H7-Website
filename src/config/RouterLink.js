@@ -21,6 +21,8 @@ import HotelAccommodation from "../pages/Hotel/HotelAccommodation/HotelAccommoda
 import HotelGallery from "../pages/Hotel/HotelGallery/HotelGallery";
 import HotelDining from "../pages/Hotel/HotelDining/HotelDining";
 import HotelFacilities from "../pages/Hotel/HotelFacilities/HotelFacilities";
+import HotelRoomView from "../pages/Hotel/HotelRoomView/HotelRoomView";
+import OfferView from "../pages/Hotel/OfferView/OfferView";
 
 const RouterLink = () => {
   return (
@@ -48,6 +50,8 @@ const RouterLink = () => {
         <Route path="/gallery/:id" element={<HotelGallery />} />
         <Route path="/dining/:id" element={<HotelDining />} />
         <Route path="/facilities/:id" element={<HotelFacilities />} />
+        <Route path="/room/:hotel/:room" element={<HotelRoomView />} />
+        <Route path="/offer/:hotel/:offer" element={<OfferView />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

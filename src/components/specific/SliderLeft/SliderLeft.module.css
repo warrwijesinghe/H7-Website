@@ -142,3 +142,23 @@
 .slide_next_btn img {
     height: 1.8rem;
 }
+
+@media (max-width: 768px) {
+    .sliders{
+        width: 100%;
+    }
+    .slide_navigation{
+        display: none;
+    }
+
+    .next_slider_image {
+        width: 70%;
+        height: 32rem;
+        border-radius: 0.4rem;
+        overflow: hidden;
+    }
+
+    .slide_next_btn{
+        right: 8.6rem;
+    }
+}

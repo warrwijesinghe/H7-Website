@@ -46,3 +46,10 @@
 .offer_section {
     padding-bottom: 4rem;
 }
+
+@media (max-width: 768px) {
+    .stay_card_title {
+        text-align: center;
+        width: 100%;
+    }
+}

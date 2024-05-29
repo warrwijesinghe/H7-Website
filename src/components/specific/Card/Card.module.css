@@ -76,3 +76,9 @@
     z-index: -1;
     transform: rotate(60deg);
 }
+
+@media (max-width: 768px) {
+    .card {
+        min-width: 26rem;
+    }
+}

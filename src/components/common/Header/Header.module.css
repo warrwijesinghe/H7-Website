@@ -1,6 +1,6 @@
 .header {
   position: absolute;
-  top: 5%;
+  top: 2.8rem;
   width: 100%;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.03) 0%, rgba(59, 59, 59, 0.27) 51.27%, rgba(115, 115, 115, 0) 100%);
   z-index: 1000;
@@ -21,7 +21,8 @@
 }
 
 .header_menu{
-  height: 0.4rem;
+  height: 1.6rem;
+  margin-top: 0.4rem;
 }
 
 .nav_links {
@@ -49,4 +50,14 @@
 
 .header_search{
   height: 1.4rem;
+}
+
+@media (max-width: 768px) {
+  .nav_links{
+    display: none;
+  }
+
+  .header {
+    padding: 1.4rem 0;
+  }
 }

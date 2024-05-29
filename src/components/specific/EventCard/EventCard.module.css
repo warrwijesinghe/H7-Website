@@ -49,3 +49,22 @@
     object-fit: cover;
     border-radius: var(--border-radius);
 }
+
+@media (max-width: 768px) {
+    .event_card{
+      height: 55rem;
+    }
+
+    .event_card_image {
+        top: 0;
+        width: 100%;
+    }
+
+    .event_card_content{
+        text-align: center;
+        top: 16rem;
+        left: 2.4rem;
+        width: 90%;
+    }
+
+}
