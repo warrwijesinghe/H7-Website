@@ -39,7 +39,6 @@ const Home = () => {
 
           <img
             src={map}
-            loading="lazy"
             alt="Tourism map sri lanka"
             className={styles.welcome_img}
           />

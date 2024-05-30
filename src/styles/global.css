@@ -119,6 +119,10 @@ button {
         font-size: 50%;
     }
 
+    body{
+        background-color: brown;
+    }
+
     .heading-primary,
     .heading-secondary,
     .heading-tertiary {

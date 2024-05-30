@@ -10,6 +10,7 @@ export const MenuProvider = ({ children }) => {
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
+        console.log(menuOpen)
     };
 
     return (

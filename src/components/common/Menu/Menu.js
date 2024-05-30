@@ -6,12 +6,18 @@ import { Link } from "react-router-dom";
 
 const Menu = () => {
   const { menuOpen, toggleMenu } = useMenu();
-
+  const overlayClass = `${styles.overlay} ${menuOpen ? styles.overlay_open: ''}`;
   // if (!menuOpen) return null;
 
+  const handleToggleMenu = () => {
+    if (menuOpen) {
+      toggleMenu();
+    }
+  };
+
   return (
-    <div className={`${menuOpen ? styles.overlay: ''}`} onClick={toggleMenu}>
-      <div className={`${styles.menu} ${menuOpen ? styles.menu_open : ''}`}>
+    <div className={`${menuOpen ? overlayClass: ''}`} onClick={handleToggleMenu}>
+      <div className={`${styles.menu} ${menuOpen ? styles.menu_open : ''}`} onClick={toggleMenu}>
         <ul className={styles.menu_list} onClick={(e) => e.stopPropagation()}>
           <li onClick={toggleMenu}><Link to={'/'} >Home</Link></li>
           <li onClick={toggleMenu}><Link to={'./hotels'} >Hotels</Link></li>
