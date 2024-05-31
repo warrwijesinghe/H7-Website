@@ -1,7 +1,5 @@
 import React from "react";
 import styles from "./Offers.module.css";
-import CheckRateCard from "../../components/specific/CheckRateCard/CheckRateCard";
-import logo from "../../assets/images/logo-ne.png";
 import EventCard from "../../components/specific/EventCard/EventCard";
 import Button from "../../components/common/Button/Button";
 import Input from "../../components/common/Input/Input";
@@ -13,21 +11,15 @@ import youtubeIco from "../../assets/icons/youtube-ico.svg";
 import tweetIco from "../../assets/icons/tweet-ico.svg";
 import OfferCard from "../../components/specific/OfferCard/OfferCard";
 import Partners from "../../components/specific/Partners/Partners";
+import HeroSection from "../../components/common/HeroSection/HeroSection";
+import FilterCard from "../../components/specific/FilterCard/FilterCard";
 
 const Offers = () => {
   const offerList = Array.from({ length: 6 });
 
   return (
     <div>
-      <section className={styles.hero_section}>
-        <div className={styles.logo}>
-          <div>
-            <img src={logo} alt="Haven Seven Hotels" />
-            <p>Heaven Seven Hotel</p>
-          </div>
-        </div>
-        <CheckRateCard />
-      </section>
+      <HeroSection />
 
       <section className={styles.intro_ex_section}>
         <div className="container text-center">
@@ -44,9 +36,11 @@ const Offers = () => {
         </div>
       </section>
 
+      <FilterCard />
+
       <section className={`text-center ${styles.tours_section}`}>
         <div className="container ">
-          <div className="grid col-3">
+          <div className={`grid col-3 ${styles.mobile_grid}`}>
             {offerList.map((_, index) => (
               <OfferCard
                 key={index}

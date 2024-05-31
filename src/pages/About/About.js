@@ -118,24 +118,32 @@ const About = () => {
             </div>
           </div>
           <div className={styles.director}>
-          <div className={styles.director_content}>
-          <img
-                  src="https://picsum.photos/400"
-                  alt="heaven Seven"
-                  className={styles.director_img}
-                />
+            <div className={styles.director_content}>
+              <img
+                src="https://picsum.photos/400"
+                alt="heaven Seven"
+                className={styles.director_img}
+              />
 
-                <div>
+              <div>
                 <h1 className={styles.founder_title}>Director of Operations</h1>
                 <p className={styles.founder_name}>Hiran Serasinghe</p>
                 <p className={styles.vice_name}>Vice President</p>
-                <p className={styles.normal_title}><span>Hotels Association of Sri Lanka.</span></p>
-                <p className={styles.normal_title}><span>Member</span> - Sri Lanka Tourism</p>
-                <p className={styles.normal_title}>Development Authority (Hotel Classification Committee)</p>
-                <p className={styles.normal_title}><span>First Sri Lankan GM</span> of an internationally managed 5 star hotel.</p>
-
-                </div>
-          </div>
+                <p className={styles.normal_title}>
+                  <span>Hotels Association of Sri Lanka.</span>
+                </p>
+                <p className={styles.normal_title}>
+                  <span>Member</span> - Sri Lanka Tourism
+                </p>
+                <p className={styles.normal_title}>
+                  Development Authority (Hotel Classification Committee)
+                </p>
+                <p className={styles.normal_title}>
+                  <span>First Sri Lankan GM</span> of an internationally managed
+                  5 star hotel.
+                </p>
+              </div>
+            </div>
             <p className={styles.director_description}>
               With a distinguished career spanning prestigious establishments,
               Mr. Hiran Serasinghe epitomizes excellence in the hospitality
@@ -174,7 +182,7 @@ const About = () => {
               Life is short, travel often
             </h1>
 
-            <div className="grid col-3">
+            <div className={`grid col-3 ${styles.mobile_grid}`}>
               <Card
                 logo={logo}
                 cardImage="https://picsum.photos/400"

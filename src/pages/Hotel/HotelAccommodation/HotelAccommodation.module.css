@@ -21,3 +21,10 @@
 .suit_rooms{
     margin-bottom: 2rem;
 }
+
+@media (max-width: 768px) {
+    .mobile_grid{
+        overflow-x: scroll;
+        padding-bottom: 2rem;
+    }
+}

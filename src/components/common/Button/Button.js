@@ -22,7 +22,7 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
-  variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'primary-dark', 'primary-outline']),
+  variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'primary-dark', 'primary-outline', 'transparent']),
   disabled: PropTypes.bool,
   fullWidth: PropTypes.bool,
 };

@@ -28,7 +28,7 @@ const HotelOffer = () => {
 
       <section className={`text-center ${styles.tours_section}`}>
         <div className="container ">
-          <div className="grid col-3">
+          <div className={`grid col-3 ${styles.mobile_grid}`}>
             {offerList.map((_, index) => (
               <OfferCard
                 key={index}

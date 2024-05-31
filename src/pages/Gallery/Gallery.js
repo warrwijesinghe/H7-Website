@@ -14,6 +14,7 @@ import tweetIco from "../../assets/icons/tweet-ico.svg";
 import playIco from "../../assets/icons/video-ico.svg";
 import Card from "../../components/specific/Card/Card";
 import HeroSection from "../../components/common/HeroSection/HeroSection";
+import FilterCard from "../../components/specific/FilterCard/FilterCard";
 
 const Gallery = () => {
   return (
@@ -39,6 +40,8 @@ const Gallery = () => {
           </p>
         </div>
       </section>
+
+      <FilterCard />
 
       <section className={styles.gallery_grid_section}>
         <div className="container text-center">

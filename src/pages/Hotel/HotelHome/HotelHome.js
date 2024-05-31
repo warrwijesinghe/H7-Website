@@ -94,7 +94,7 @@ const HotelHome = () => {
       </section>
       <section className={styles.dining_section}>
         <div className="container text-center">
-          <div className="grid col-2">
+          <div className={`grid col-2 ${styles.mobile_dining}`}>
             <div className={styles.dining_banner}>
               <img src="https://picsum.photos/400" alt="Dining logo" />
             </div>
@@ -173,7 +173,7 @@ const HotelHome = () => {
               small museum at the Visitors center that exhibits interesting
               display
             </p>
-            <img src="https://picsum.photos/400" alt="Dining logo" />
+            <img src="https://picsum.photos/400" alt="Dining logo" className={styles.experience_img} />
           </div>
 
           <div className={styles.experience_slider}>
@@ -209,7 +209,7 @@ const HotelHome = () => {
           <span className="subheading">Heaven Seven Hotel</span>
           <h1 className="heading-primary mb-lg">Special Offers</h1>
 
-          <div className="grid col-3">
+          <div className={`grid col-3 ${styles.mobile_grid}`}>
             <OfferCard
               cardImage="https://picsum.photos/400"
               title="A Limited Time Hikkaduwa"

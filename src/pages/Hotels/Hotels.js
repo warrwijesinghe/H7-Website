@@ -1,7 +1,5 @@
 import React from "react";
 import styles from "./Hotels.module.css";
-import CheckRateCard from "../../components/specific/CheckRateCard/CheckRateCard";
-import logo from "../../assets/images/logo-ne.png";
 import map from "../../assets/images/Map.png";
 import HotelCard from "../../components/specific/HotelCard/HotelCard";
 import EventCard from "../../components/specific/EventCard/EventCard";
@@ -16,19 +14,12 @@ import tweetIco from "../../assets/icons/tweet-ico.svg";
 import OfferCard from "../../components/specific/OfferCard/OfferCard";
 import Partners from "../../components/specific/Partners/Partners";
 import InfoCard from "../../components/specific/InfoCard/InfoCard";
+import HeroSection from "../../components/common/HeroSection/HeroSection";
 
 const Hotels = () => {
   return (
     <div>
-      <section className={styles.hero_section}>
-        <div className={styles.logo}>
-          <div>
-            <img src={logo} alt="Haven Seven Hotels" />
-            <p>Heaven Seven Hotel</p>
-          </div>
-        </div>
-        <CheckRateCard />
-      </section>
+      <HeroSection />
 
       <section className={styles.intro_ex_section}>
         <div className="container text-center">

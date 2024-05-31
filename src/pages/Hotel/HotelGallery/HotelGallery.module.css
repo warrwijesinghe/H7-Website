@@ -87,3 +87,10 @@
     background: linear-gradient(176.69deg, #FFFFFF 3.74%, rgba(255, 255, 255, 0.808155) 19.18%, rgba(255, 255, 255, 0.97) 71.47%, rgba(255, 255, 255, 0.36) 93.39%, 1);
 
 }
+
+@media (max-width: 768px) {
+    .mobile_grid{
+        overflow-x: scroll;
+        padding-bottom: 2rem;
+    }
+}

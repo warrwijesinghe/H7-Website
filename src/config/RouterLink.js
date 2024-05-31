@@ -23,6 +23,8 @@ import HotelDining from "../pages/Hotel/HotelDining/HotelDining";
 import HotelFacilities from "../pages/Hotel/HotelFacilities/HotelFacilities";
 import HotelRoomView from "../pages/Hotel/HotelRoomView/HotelRoomView";
 import OfferView from "../pages/Hotel/OfferView/OfferView";
+import HotelRestaurentView from "../pages/Hotel/HotelRestaurentView/HotelRestaurentView";
+import HotelLocation from "../pages/Hotel/HotelLocation/HotelLocation";
 
 const RouterLink = () => {
   return (
@@ -42,16 +44,18 @@ const RouterLink = () => {
       </Route>
 
       <Route element={<HotelLayout />}>
-        <Route path="/hotel/:id" element={<HotelHome />} />
-        <Route path="/offers/:id" element={<HotelOffer />} />
-        <Route path="/experience/:id" element={<HotelExperiences />} />
-        <Route path="/contact/:id" element={<HotelContact />} />
-        <Route path="/accommodation/:id" element={<HotelAccommodation />} />
-        <Route path="/gallery/:id" element={<HotelGallery />} />
-        <Route path="/dining/:id" element={<HotelDining />} />
-        <Route path="/facilities/:id" element={<HotelFacilities />} />
+        <Route path="/hotel/:hotel" element={<HotelHome />} />
+        <Route path="/offers/:hotel" element={<HotelOffer />} />
+        <Route path="/experience/:hotel" element={<HotelExperiences />} />
+        <Route path="/contact/:hotel" element={<HotelContact />} />
+        <Route path="/accommodation/:hotel" element={<HotelAccommodation />} />
+        <Route path="/gallery/:hotel" element={<HotelGallery />} />
+        <Route path="/dining/:hotel" element={<HotelDining />} />
+        <Route path="/facilities/:hotel" element={<HotelFacilities />} />
         <Route path="/room/:hotel/:room" element={<HotelRoomView />} />
         <Route path="/offer/:hotel/:offer" element={<OfferView />} />
+        <Route path="/restaurant/:hotel/:restaurant" element={<HotelRestaurentView />} />
+        <Route path="/location/:hotel" element={<HotelLocation />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

@@ -127,6 +127,7 @@
 .founder_name{
     font-size: 1.8rem;
     font-weight: 700;
+    color: var(--secondary-color);
 }
 
 .director{
@@ -215,4 +216,56 @@
     width: 60%;
     margin: 0 auto;
     margin-bottom: 2rem;
+}
+
+
+
+@media (max-width: 768px) {
+    .about_card {
+        display: grid;
+        min-height: 65rem;
+    }
+    .about_card_image {
+        height: 28rem;
+        bottom: 1rem;
+        width: 88%;
+        right: 0;
+    }
+
+    .about_card_content {
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .left_content{
+        padding: 6rem;
+    }
+    
+    .right_content{
+        right: 0;
+        padding: 6rem; 
+    }
+
+    .mobile_grid{
+        overflow-x: scroll;
+        padding-bottom: 2rem;
+    }
+
+    .founders{
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    .founder_img{
+        width: 14.6rem;
+        height: 14.6rem;
+        object-fit: cover;
+    }
+
+    .director_content{
+        display: grid;
+    }
+
+    
 }

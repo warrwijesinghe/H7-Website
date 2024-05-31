@@ -57,7 +57,7 @@ const HotelAccommodation = () => {
         <div className="container text-center">
           <div className={styles.delux_rooms}>
             <h1 className={styles.room_title}>Delux Rooms</h1>
-            <div className="grid col-3">
+            <div className={`grid col-3 ${styles.mobile_grid}`}>
                 <RoomCard 
                     cardImage="https://picsum.photos/400"
                     title="Double Dulx Room 01"
@@ -78,7 +78,7 @@ const HotelAccommodation = () => {
           </div>
           <div className={styles.suit_rooms}>
             <h1 className={styles.room_title}>Suit Rooms</h1>
-            <div className="grid col-3 mb-lg">
+            <div className={`grid col-3 ${styles.mobile_grid}`}>
             <RoomCard 
                     cardImage="https://picsum.photos/400"
                     title="Double Dulx Room 01"

@@ -87,7 +87,7 @@ const HotelGallery = () => {
               Life is short, travel often
             </h1>
 
-            <div className="grid col-3">
+            <div className={`grid col-3 ${styles.mobile_grid}`}>
               <Card
                 logo={logo}
                 cardImage="https://picsum.photos/400"

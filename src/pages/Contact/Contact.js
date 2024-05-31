@@ -77,7 +77,7 @@ const Contact = () => {
 
       <section className={styles.hotels_section}>
         <div className="container">
-          <div className="grid col-2">
+          <div className={`grid col-2 ${styles.mobile_grid}`}>
             <div className={styles.hotel}>
               <img src="https://picsum.photos/400" alt="Heaven Seven Hotel" />
               <div className={styles.hotel_content}>

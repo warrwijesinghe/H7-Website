@@ -18,7 +18,7 @@ const HotelDining = () => {
             Resturant
           </p>
 
-          <div className={`grid col-3 ${styles.grid_card}`}>
+          <div className={`grid col-3 ${styles.grid_card} ${styles.mobile_grid}`}>
             <DiningCard
               cardImage="https://picsum.photos/400"
               title="Nights Dinner Restaurant"

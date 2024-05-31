@@ -1,0 +1,49 @@
+.filter_section{
+    background-color: #fff;
+    box-shadow: 2px 2px 41.5px 2px #00000026;
+    border-radius: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    padding: 1.8rem 0;
+    width: 46rem;
+    margin: 0 auto;
+}
+
+
+
+.filter_group{
+    border-right: #D9D9D9 solid 1px;
+    padding: 0 1.6rem;
+}
+
+.filter_group:last-child {
+    border-right: none;
+    padding: 0;
+}
+
+.filter_group:nth-child(6) {
+    border-right: none;
+  }
+
+.filter_group_label{
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--muted-text-color);
+    margin-bottom: 0.4rem;
+}
+
+.filter_group_value{
+    color: #000;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.filter_clear_button{
+    width: 17rem;
+}
+
+.close_ico{
+    height: 1.2rem;
+    cursor: pointer;
+    margin-right: 1.4rem;
+}

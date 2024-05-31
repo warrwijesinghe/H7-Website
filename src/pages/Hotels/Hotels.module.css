@@ -1,31 +1,3 @@
-.hero_section {
-    height: 80vh;
-    position: relative;
-    background-image: url('../../assets/images/background.png');
-    background-size: cover;
-    background-position: center center;
-}
-
-.logo {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-}
-
-.logo img {
-    height: 6rem;
-}
-
-.logo p {
-    font-size: 1.6rem;
-    font-weight: 500;
-    color: #fff;
-    padding: 1rem;
-}
 
 .intro_ex_section{
     padding-top: 10rem;

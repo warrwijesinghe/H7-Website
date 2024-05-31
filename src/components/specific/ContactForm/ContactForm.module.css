@@ -77,3 +77,10 @@
   .submit{
     width: 20rem;
   }
+
+  @media (max-width: 768px) {
+    .mobile_grid{
+      grid-template-columns: 1fr;
+      row-gap: 0.6rem;
+    }
+  }

@@ -102,3 +102,31 @@
 .card_footer li:first-child {
     color: var(--primary-color);
 }
+
+@media (max-width: 768px) {
+    .card {
+        height: 90rem;
+        display: grid;
+        margin-bottom: 2rem;
+    }
+    
+    .card_image {
+        width: 100%;
+        bottom: 0;
+        position: relative;
+    }
+    .card_content {
+        top: 0;
+        width: 100%;
+        position: relative;
+        grid-row: 1;
+    }
+    .card_feature{
+        margin-top: 4rem;
+        width: 100%;
+        left: 0;
+        position: relative;
+        grid-row: 3;
+    }
+    
+}

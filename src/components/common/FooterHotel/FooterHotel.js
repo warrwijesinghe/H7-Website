@@ -13,109 +13,157 @@ const FooterHotel = () => {
   return (
     <div>
       <footer className={styles.footer_section}>
-        <div className={`${styles.footer} container`}>
-          <div className={styles.footer_content}>
-            <img src={logo} alt="Heaven Seven" className={styles.footer_logo} />
-            <p className={styles.footer_description}>
-              Experience the epitome of hospitality and timeless elegance with
-              Heaven Seven Hotels. Uniting luxury with comfort in spectacular
-              locations, we ensure each visit is uniquely memorable.
-            </p>
-
-            <h1 className={styles.footer_title}>Apps</h1>
-            <div className={styles.footer_apps}>
-              <div className={styles.footer_app}>
-                <img
-                  src={apple}
-                  alt="Heaven Seven"
-                  className={styles.footer_app_logo}
-                />
-                <div>
-                  <h3 className={styles.footer_app_title}>Download on the</h3>
-                  <p className={styles.footer_app_description}>Apple Store</p>
+        <div className="container">
+          <div className={styles.footer}>
+            <div className={styles.footer_about}>
+              <img
+                src={logo}
+                alt="Heaven Seven"
+                className={styles.footer_logo}
+              />
+              <p className={styles.footer_description}>
+                Experience the epitome of hospitality and timeless elegance with
+                Heaven Seven Hotels. Uniting luxury with comfort in spectacular
+                locations, we ensure each visit is uniquely memorable.
+              </p>
+            </div>
+            <div className={styles.footer_nav_list}>
+              <div className={styles.footer_navigation}>
+                <div className={`grid col-3 ${styles.mobile_grid_col_3}`}>
+                  <div className={styles.footer_nav_popular}>
+                    <h1 className={styles.footer_title}>Popular Search</h1>
+                    <ul className={styles.footer_nav}>
+                      <li>Apartment for Sale</li>
+                      <li>Apartment for Rent</li>
+                      <li>Offices for Sale</li>
+                      <li>Offices for Rent</li>
+                    </ul>
+                  </div>
+                  <div className={styles.footer_nav_quick}>
+                    <h1 className={styles.footer_title}>Quick Links</h1>
+                    <ul className={styles.footer_nav}>
+                      <li>Terms of Use</li>
+                      <li>Privacy Policy</li>
+                      <li>Pricing Plans</li>
+                      <li>Our Services</li>
+                      <li>
+                        <Link to={"/contact"}>Contact</Link>
+                      </li>
+                      <li>Careers</li>
+                      <li>
+                        <Link to={"/faq"}>FAQs</Link>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className={styles.footer_nav_popular}>
+                    <h1 className={styles.footer_title}>Discovery</h1>
+                    <ul className={styles.footer_nav}>
+                      <li>Chicago</li>
+                      <li>Los Angeles</li>
+                      <li>New Jersey</li>
+                      <li>New York</li>
+                      <li>California</li>
+                    </ul>
+                  </div>
+                  <div className={styles.mobile_app}>
+                    <h1 className={styles.footer_title}>Apps</h1>
+                    <div className={styles.footer_apps}>
+                      <div className={styles.footer_app}>
+                        <img
+                          src={apple}
+                          alt="Heaven Seven"
+                          className={styles.footer_app_logo}
+                        />
+                        <div>
+                          <h3 className={styles.footer_app_title}>
+                            Download on the
+                          </h3>
+                          <p className={styles.footer_app_description}>
+                            Apple Store
+                          </p>
+                        </div>
+                      </div>
+                      <div className={styles.footer_app}>
+                        <img
+                          src={android}
+                          alt="Heaven Seven"
+                          className={styles.footer_app_logo}
+                        />
+                        <div>
+                          <h3 className={styles.footer_app_title}>Get in on</h3>
+                          <p className={styles.footer_app_description}>
+                            Google Play
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className={styles.footer_app}>
-                <img
-                  src={android}
-                  alt="Heaven Seven"
-                  className={styles.footer_app_logo}
-                />
-                <div>
-                  <h3 className={styles.footer_app_title}>Get in on</h3>
-                  <p className={styles.footer_app_description}>Google Play</p>
+            </div>
+            <div className={styles.footer_apps_col}>
+              <h1 className={styles.footer_title}>Apps</h1>
+              <div className={styles.footer_apps}>
+                <div className={styles.footer_app}>
+                  <img
+                    src={apple}
+                    alt="Heaven Seven"
+                    className={styles.footer_app_logo}
+                  />
+                  <div>
+                    <h3 className={styles.footer_app_title}>Download on the</h3>
+                    <p className={styles.footer_app_description}>Apple Store</p>
+                  </div>
+                </div>
+                <div className={styles.footer_app}>
+                  <img
+                    src={android}
+                    alt="Heaven Seven"
+                    className={styles.footer_app_logo}
+                  />
+                  <div>
+                    <h3 className={styles.footer_app_title}>Get in on</h3>
+                    <p className={styles.footer_app_description}>Google Play</p>
+                  </div>
                 </div>
               </div>
             </div>
-
-            <h1 className={styles.footer_title}>Follow us on social media</h1>
-            <div className={styles.footer_socials}>
-              <img
-                src={facebook}
-                alt="facebook"
-                className={styles.footer_social}
-              />
-              <img
-                src={intagram}
-                alt="intagram"
-                className={styles.footer_social}
-              />
-              <img
-                src={linkdin}
-                alt="linkdin"
-                className={styles.footer_social}
-              />
-              <img src={tweet} alt="tweet" className={styles.footer_social} />
-            </div>
-          </div>
-
-          <div className={styles.footer_navigation}>
-            <div className="grid col-3">
-              <div className={styles.footer_nav_popular}>
-                <h1 className={styles.footer_title}>Popular Search</h1>
-                <ul className={styles.footer_nav}>
-                  <li>Apartment for Sale</li>
-                  <li>Apartment for Rent</li>
-                  <li>Offices for Sale</li>
-                  <li>Offices for Rent</li>
-                </ul>
-              </div>
-              <div className={styles.footer_nav_quick}>
-                <h1 className={styles.footer_title}>Quick Links</h1>
-                <ul className={styles.footer_nav}>
-                  <li>Terms of Use</li>
-                  <li>Privacy Policy</li>
-                  <li>Pricing Plans</li>
-                  <li>Our Services</li>
-                  <li><Link to={'/contact'}>Contact</Link></li>
-                  <li>Careers</li>
-                  <li><Link to={'/faq'}>FAQs</Link></li>
-                </ul>
-              </div>
-              <div className={styles.footer_nav_popular}>
-                <h1 className={styles.footer_title}>Discovery</h1>
-                <ul className={styles.footer_nav}>
-                  <li>Chicago</li>
-                  <li>Los Angeles</li>
-                  <li>New Jersey</li>
-                  <li>New York</li>
-                  <li>California</li>
-                </ul>
+            <div className={styles.footer_social_col}>
+              <h1 className={styles.footer_title}>Follow us on social media</h1>
+              <div className={styles.footer_socials}>
+                <img
+                  src={facebook}
+                  alt="facebook"
+                  className={styles.footer_social}
+                />
+                <img
+                  src={intagram}
+                  alt="intagram"
+                  className={styles.footer_social}
+                />
+                <img
+                  src={linkdin}
+                  alt="linkdin"
+                  className={styles.footer_social}
+                />
+                <img src={tweet} alt="tweet" className={styles.footer_social} />
               </div>
             </div>
-            <div className="grid col-2">
-              <div className={styles.footer_contact}>
-                <h2 className={styles.footer_contact_title}>
-                  Total Free Customer Care
-                </h2>
-                <p className={styles.footer_contact_number}>+(088) 123 456 789</p>
-              </div>
+            <div className={styles.footer_contact_col}>
+              <div className={`grid col-2 ${styles.mobile_grid_col_2}`}>
+                <div className={styles.footer_contact}>
+                  <h2 className={styles.footer_contact_title}>
+                    Total Free Customer Care
+                  </h2>
+                  <p className={styles.footer_contact_number}>
+                    +(088) 123 456 789
+                  </p>
+                </div>
 
-              <div className={styles.footer_contact}>
-                <h2 className={styles.footer_contact_title}>
-                Live Support?
-                </h2>
-                <p className={styles.footer_contact_number}>hi@homez.com</p>
+                <div className={styles.footer_contact}>
+                  <h2 className={styles.footer_contact_title}>Live Support?</h2>
+                  <p className={styles.footer_contact_number}>hi@homez.com</p>
+                </div>
               </div>
             </div>
           </div>

@@ -6,6 +6,7 @@ import arrow from '../../../assets/icons/arrow-right-ico.svg';
 
 const HotelCard = ({title, subtitle, desc, logo, image1, image2, image3}) => {
   return (
+    <Link to={`/hotel/${title}`}>
     <div className={styles.hotel_card}>
       <div className={styles.hotel_card_image}>
         <img
@@ -47,6 +48,7 @@ const HotelCard = ({title, subtitle, desc, logo, image1, image2, image3}) => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 

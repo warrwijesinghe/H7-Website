@@ -1,0 +1,106 @@
+.about_res_section{
+    padding-top: 10rem;
+    padding-bottom: 4rem;
+}
+
+.about_restaurant{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.about_res_banner{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.about_restaurant_content{
+    width: 100%;
+}
+
+.about_res_title{
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.about_res_desc {
+    font-size: 1.6rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    width: 90%;
+}
+
+.menu_card{
+    background-color: rgba(1, 120, 54, 0.06);
+    padding: 2rem;
+    min-width: 25rem;
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    border-radius: var(--border-radius);
+}
+
+.menu_card img{
+    height: 4rem;
+    text-align: left;
+}
+
+.menu_card_content{
+    text-align: left;
+}
+
+.menu_card_content h1{
+    font-style: italic;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.menu_card_content p{
+    font-style: italic;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-dark-color);
+}
+
+.gallery_res{
+    width: 100%;
+    height: 24rem;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.offer_section {
+    padding-bottom: 4rem;
+}
+
+@media (max-width: 768px) {
+    .about_res_section{
+        text-align: center;
+    }
+    .mobile_grid{
+        overflow-x: scroll;
+        padding-bottom: 2rem;
+    }
+
+    .about_restaurant{
+        grid-template-columns: 1fr;
+    }
+
+    .about_res_banner{
+        grid-row: 2;
+    }
+
+    .mobile_grid_col_2{
+        row-gap: 2rem;
+        grid-template-columns: 1fr;
+    }
+
+    .about_restaurant:last-child{
+        grid-template-columns: 1fr 1fr;
+    }
+}

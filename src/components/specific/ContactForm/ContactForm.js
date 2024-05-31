@@ -7,7 +7,7 @@ const ContactForm = () => {
   return (
     <div>
       <form className={styles.form}>
-              <div className="grid col-2">
+              <div className={`grid col-2 ${styles.mobile_grid}`}>
                 <div className={styles.form_group}>
                   <label className={styles.form_label}>Salutation</label>
                   <select className={styles.form_combo}>
@@ -15,7 +15,7 @@ const ContactForm = () => {
                   </select>
                 </div>
               </div>
-              <div className="grid col-2">
+              <div className={`grid col-2 ${styles.mobile_grid}`}>
                 <div className={styles.form_group}>
                   <label className={styles.form_label}>First Name *</label>
                   <input type="text" className={styles.form_input} />
@@ -25,7 +25,7 @@ const ContactForm = () => {
                   <input type="text" className={styles.form_input} />
                 </div>
               </div>
-              <div className="grid col-2">
+              <div className={`grid col-2 ${styles.mobile_grid}`}>
                 <div className={styles.form_group}>
                   <label className={styles.form_label}>Email *</label>
                   <input type="text" className={styles.form_input} />

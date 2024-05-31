@@ -80,5 +80,11 @@
     font-size: 1.4rem;
     padding: 2rem 0;
   }
+
+  @media (max-width: 768px) {
+    .mobile_grid{
+        grid-template-columns: 1fr;
+    }
+}
   
  

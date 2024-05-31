@@ -32,7 +32,7 @@ const HotelExperiences = () => {
 
       <section className={`text-center ${styles.tours_section}`}>
         <div className="container ">
-          <div className="grid col-3">
+          <div className={`grid col-3 ${styles.mobile_grid_col_3}`}>
             {tours.map((_, index) => (
               <Card
                 key={index}
@@ -54,7 +54,7 @@ const HotelExperiences = () => {
           <span className="subheading">Heaven Seven Hotel</span>
           <h1 className="heading-primary mb-lg">Special Offers</h1>
 
-          <div className="grid col-3">
+          <div className={`grid col-3 ${styles.mobile_grid}`}>
             <OfferCard
               cardImage="https://picsum.photos/400"
               title="A Limited Time Hikkaduwa"

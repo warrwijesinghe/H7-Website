@@ -15,7 +15,7 @@ const IndexLayout = () => {
     <MenuProvider>
       <div style={divStyle}>
         <ScrollProvider>
-          <Menu />
+          <Menu layout="index" />
           <Header />
           <main>
             <Outlet />

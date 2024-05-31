@@ -27,3 +27,11 @@
     width: 80%;
     margin: 0 auto;
 }
+
+
+@media (max-width: 768px) {
+    .mobile_grid{
+        grid-template-columns: 1fr;
+        margin: 0 2rem;
+    }
+}

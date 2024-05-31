@@ -35,5 +35,9 @@
 }
 
 
-
+@media (max-width: 768px) {
+    .card {
+        min-width: 26rem;
+    }
+}
 
