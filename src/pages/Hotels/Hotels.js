@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Hotels.module.css";
 import map from "../../assets/images/Map.png";
 import HotelCard from "../../components/specific/HotelCard/HotelCard";
@@ -15,8 +15,38 @@ import OfferCard from "../../components/specific/OfferCard/OfferCard";
 import Partners from "../../components/specific/Partners/Partners";
 import InfoCard from "../../components/specific/InfoCard/InfoCard";
 import HeroSection from "../../components/common/HeroSection/HeroSection";
+import { fetchProperties } from "../../api/apiClient";
 
 const Hotels = () => {
+  const [property, setProperties] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getProperties = async () => {
+      try {
+        const data = await fetchProperties();
+        setProperties(data);
+        
+      } catch (err) {
+        setError("Failed to fetch Properties details");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getProperties();
+  }, []);
+
+  if (loading) {
+    return <div className={styles.loading}>Loading...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
+  }
+
+
   return (
     <div>
       <HeroSection />
@@ -48,7 +78,7 @@ const Hotels = () => {
             With a vision that reaches beyond the extraordinary, Heaven Seven
             Hotels is on a path of growth, aspiring to introduce new properties
             that will broaden our portfolio and invite travelers to a wider
-            array of destinations. As we grow, this page will be your guide to
+            array of Propertiess. As we grow, this page will be your guide to
             the evolving landscapes and enriched experiences that await in our
             current and future sanctuaries of hospitality.Join us on a journey
             of discovery and luxury at Heaven Seven Hotels, where every visit is
@@ -57,47 +87,21 @@ const Hotels = () => {
         </div>
       </section>
 
-      <section className={styles.hotels_ex_section}>
-        <div className="container">
-          <HotelCard
-            title="Hotel Kandy"
-            subtitle="Lorem ipsum dolor sit amet,"
-            desc="Here, we blend the essence of local charm with the comforts of modern luxury, ensuring that whether your travels are for leisure or business, every hotel in our collection promises an experience that is both enriching and unforgettable"
-            logo="https://picsum.photos/400"
-            image1="https://picsum.photos/400"
-            image2="https://picsum.photos/400"
-            image3="https://picsum.photos/400"
-          />
-        </div>
-      </section>
-
-      <section className={styles.hotels_ex_section}>
-        <div className="container">
-          <HotelCard
-            title="Hotel Nuwara Eliya"
-            subtitle="Lorem ipsum dolor sit amet,"
-            desc="Here, we blend the essence of local charm with the comforts of modern luxury, ensuring that whether your travels are for leisure or business, every hotel in our collection promises an experience that is both enriching and unforgettable"
-            logo="https://picsum.photos/400"
-            image1="https://picsum.photos/400"
-            image2="https://picsum.photos/400"
-            image3="https://picsum.photos/400"
-          />
-        </div>
-      </section>
-
-      <section className={styles.hotels_ex_section}>
-        <div className="container">
-          <HotelCard
-            title="Hotel Hikkaduwa"
-            subtitle="Lorem ipsum dolor sit amet,"
-            desc="Here, we blend the essence of local charm with the comforts of modern luxury, ensuring that whether your travels are for leisure or business, every hotel in our collection promises an experience that is both enriching and unforgettable"
-            logo="https://picsum.photos/400"
-            image1="https://picsum.photos/400"
-            image2="https://picsum.photos/400"
-            image3="https://picsum.photos/400"
-          />
-        </div>
-      </section>
+      {property.map((item) => (
+        <section key={item.id} className={styles.hotels_ex_section}>
+          <div className="container">
+            <HotelCard
+              title={item.longName}
+              subtitle={item.shortName}
+              desc={item.shortDescription}
+              logo="https://picsum.photos/400"
+              image1="https://picsum.photos/400"
+              image2="https://picsum.photos/400"
+              image3="https://picsum.photos/400"
+            />
+          </div>
+        </section>
+      ))}
 
       <section className={styles.why_stay_section}>
         <div className="container text-center">
