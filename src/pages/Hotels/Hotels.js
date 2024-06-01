@@ -27,7 +27,7 @@ const Hotels = () => {
       try {
         const data = await fetchProperties();
         setProperties(data);
-        
+        console.log('Page', data)
       } catch (err) {
         setError("Failed to fetch Properties details");
       } finally {
@@ -91,13 +91,13 @@ const Hotels = () => {
         <section key={item.id} className={styles.hotels_ex_section}>
           <div className="container">
             <HotelCard
-              title={item.longName}
-              subtitle={item.shortName}
+              title={item.shortName}
+              subtitle={item.longName}
               desc={item.shortDescription}
-              logo="https://picsum.photos/400"
-              image1="https://picsum.photos/400"
-              image2="https://picsum.photos/400"
-              image3="https://picsum.photos/400"
+              logo={item.property_image_urls[0].imgeUrl}
+              image1={item.property_image_urls[1].imgeUrl}
+              image2={item.property_image_urls[2].imgeUrl}
+              image3={item.property_image_urls[3].imgeUrl}
             />
           </div>
         </section>
