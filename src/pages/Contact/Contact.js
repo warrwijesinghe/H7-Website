@@ -1,25 +1,60 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Contact.module.css";
 import HeroSection from "../../components/common/HeroSection/HeroSection";
 import StayUs from "../../components/common/StayUs/StayUs";
 import Partners from "../../components/specific/Partners/Partners";
 import Button from "../../components/common/Button/Button";
 import ContactForm from "../../components/specific/ContactForm/ContactForm";
+import { fetchProperties, fetchPropertyText } from "../../api/apiClient";
 
 const Contact = () => {
+  const [propertyText, setPropertyText] = useState(null);
+  const [properties, setProperties] = useState(null);
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [textData, propertiesData] = await Promise.all([
+          fetchPropertyText("Group", "Contact Us"),
+          fetchProperties(),
+        ]);
+
+        setPropertyText(textData);
+        setProperties(propertiesData.filter((item) => item.id !== 14));
+      } catch (err) {
+        setError("Failed to fetch data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div className={styles.loading}>Loading...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
+  }
+
+  console.log("text", propertyText);
+  console.log("properties", properties);
+
   return (
     <div className={styles.contact_component}>
       <HeroSection />
       <section className={styles.welcome_section}>
         <div className="container text-center">
-          <h1 className="heading-secondary">Contact Us</h1>
+          <h1 className="heading-secondary">
+            {propertyText?.welcome_Header?.text || ""}
+          </h1>
           <p className="description mb-sm">
-            Welcome to the Contact Us page for Heaven Seven Hotels. We are here
-            to assist you with any inquiries, provide detailed information, and
-            help ensure your experience with us is seamless and satisfying.
-            Whether you need to make a booking, inquire about our services, or
-            simply want more information about our destinations, our dedicated
-            team is ready to help.
+            {propertyText?.welcome_paragraph_1?.text || ""}
           </p>
         </div>
       </section>
@@ -78,32 +113,25 @@ const Contact = () => {
       <section className={styles.hotels_section}>
         <div className="container">
           <div className={`grid col-2 ${styles.mobile_grid}`}>
-            <div className={styles.hotel}>
-              <img src="https://picsum.photos/400" alt="Heaven Seven Hotel" />
-              <div className={styles.hotel_content}>
-                <h1 className={styles.hotel_title}>Kandy</h1>
-                <p className={styles.hotel_desc}>
-                  Lorem ipsum dolor sit amet Consectetur adipisicing elit, sed
-                  do eiusmod temp
-                </p>
-                <Button type="button" variant="primary">
-                  Get In Touch
-                </Button>
-              </div>
-            </div>
-            <div className={styles.hotel}>
-              <img src="https://picsum.photos/400" alt="Heaven Seven Hotel" />
-              <div className={styles.hotel_content}>
-                <h1 className={styles.hotel_title}>Nuwara Eliya</h1>
-                <p className={styles.hotel_desc}>
-                  Lorem ipsum dolor sit amet Consectetur adipisicing elit, sed
-                  do eiusmod temp
-                </p>
-                <Button type="button" variant="primary">
-                  Get In Touch
-                </Button>
-              </div>
-            </div>
+            {properties &&
+              properties.map((item) => (
+                <div className={styles.hotel} key={item.id}>
+                  <img
+                    src={item.property_image_urls[0]?.imgeUrl}
+                    alt={item.property_image_urls[0]?.imgAlt}
+                  />
+                  <div className={styles.hotel_content}>
+                    <h1 className={styles.hotel_title}>{item.shortName}</h1>
+                    <p className={styles.hotel_desc}>
+                    {item.shortDescription}
+                    </p>
+                    <Button type="button" variant="primary">
+                      Get In Touch
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            
           </div>
         </div>
       </section>

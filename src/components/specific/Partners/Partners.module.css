@@ -1,10 +1,12 @@
 .partners{
     padding: 4rem 0;
+    padding-bottom: 2rem;
     background-color: var(--primary-light-box-color);
 }
 
 .partner_list{
-    display: flex;
+    /* display: flex;
+    justify-content: center; */
     gap: 1rem;
     width: 85%;
     margin: 0 auto;
@@ -56,8 +58,20 @@
 }
 
 .partner{
-    min-width: 25rem;
-    max-width: 25rem;
+    min-width: 24rem;
+    max-width: 24rem;
     height: 8rem;
-    background-color: var(--muted-text-color);
+    /* background-color: var(--muted-text-color); */
+}
+
+.partner img{
+    width: 100%;
+    height: 100%;
+    object-fit:contain;
+}
+
+@media (max-width: 768px) {
+    .partner_list {
+        width: 90%;
+    }
 }

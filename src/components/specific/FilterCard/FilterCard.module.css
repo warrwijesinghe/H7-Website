@@ -47,3 +47,23 @@
     cursor: pointer;
     margin-right: 1.4rem;
 }
+
+@media (max-width: 944px) {
+    .filter_section{
+        width: 48rem;
+    }
+
+    .filter_clear_button{
+        width: 18rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .filter_section{
+        width: 46rem;
+    }
+
+    .filter_clear_button{
+        width: 17.4rem;
+    }
+}

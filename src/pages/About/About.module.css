@@ -195,9 +195,6 @@
 }
 
 .mice_content{
-    background: 
-    linear-gradient(rgba(24, 26, 32, 0.8), rgba(24, 26, 32, 0.8)),
-    url('../../assets/images/restaurent.png');
     background-size: cover;
     background-position: center center;
     padding: 6rem;

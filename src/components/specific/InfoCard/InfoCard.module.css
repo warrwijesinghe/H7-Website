@@ -42,7 +42,7 @@
 }
 
 .info_card_title{
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     color: var(--primary-color);
     margin-bottom: 1.8rem;
 }
@@ -77,5 +77,6 @@
 @media (max-width: 768px) {
     .info_card {
         min-width: 28rem;
+        margin: 0 2rem;
     }
 }

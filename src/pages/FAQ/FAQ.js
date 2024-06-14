@@ -1,20 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./FAQ.module.css";
 import HeroSection from "../../components/common/HeroSection/HeroSection";
 import StayUs from "../../components/common/StayUs/StayUs";
 import FaqItem from "../../components/specific/FaqItem/FaqItem";
+import { fetchPropertyText } from "../../api/apiClient";
 
 const FAQ = () => {
+  const [propertyText, setPropertyText] = useState(null);
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [textData] = await Promise.all([
+          fetchPropertyText('Group', 'Testimonials'),
+        ]);
+
+        setPropertyText(textData);
+      } catch (err) {
+        setError("Failed to fetch data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div className={styles.loading}>Loading...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
+  }
+
+  console.log('text', propertyText)
   return (
     <div>
       <HeroSection />
       <section className={styles.welcome_section}>
         <div className="container text-center">
           <p className="description mb-sm">
-            Navigating your stay at Heaven Seven Hotels is as serene as the
-            landscapes surrounding us. Below, we’ve answered some of the most
-            common questions our guests have, ensuring you have all the
-            information you need for a flawless and enjoyable experience.
+          {propertyText?.welcome_paragraph_1?.text || ''}
           </p>
         </div>
       </section>
@@ -50,67 +80,67 @@ const FAQ = () => {
               disc="All rooms include Wi-Fi, air conditioning, private bathrooms, a flat-screen TV, and a minibar. Higher-tier rooms may offer additional luxuries."
             />
             <FaqItem
-              title="What amenities are included in the rooms ?"
+              title="Is parking available at the hotel?"
               disc="Yes, complimentary parking is available for all guests. Valet services may also be available."
             />
             <FaqItem
-              title="What amenities are included in the rooms ?"
+              title="Do you offer airport shuttle service?"
               disc="We offer airport transfers at an additional cost. Please provide your flight details when booking to arrange a pickup."
             />
             <FaqItem
-              title="What amenities are included in the rooms ?"
+              title="What dining options are available at the hotel?"
               disc="Our hotels feature on-site restaurants with diverse menus, including local and international cuisine. Room service is also available."
             />
             <FaqItem
-              title="What amenities are included in the rooms ?"
+              title="Do your hotels have gym facilities?"
               disc="Yes, our hotels are equipped with a gym and other fitness facilities. Some locations also offer classes and personal training sessions."
             />
             <FaqItem
-              title="What amenities are included in the rooms ?"
+              title="Do you have a loyalty program?"
               disc="Yes, our loyalty program offers exclusive benefits, rewards, and discounts. Sign up through our website or at check-in."
             />
             <FaqItem
-              title="What amenities are included in the rooms ?"
+              title="Is smoking allowed in the rooms or on the hotel premises?"
               disc="Our hotels are smoke-free environments. Designated smoking areas are available outside the buildings."
             />
             <FaqItem
-              title="What amenities are included in the rooms ?"
+              title="How do I get to the hotel from the nearest train station or airport?"
               disc="Detailed directions and options for public transportation can be found on our website or by contacting our front desk."
             />
             <FaqItem
-              title="What amenities are included in the rooms ?"
+              title="What local attractions are near the hotel?"
               disc="Our staff are happy to recommend local attractions and assist with arranging tours and tickets."
             />
             <FaqItem
-              title="What amenities are included in the rooms ?"
+              title="Can the hotel accommodate dietary restrictions for its dining services?"
               disc="Yes, please inform us of any dietary restrictions in advance, and our chefs will accommodate your needs."
             />
             <FaqItem
-              title="What amenities are included in the rooms ?"
+              title="What security measures are in place at your hotels?"
               disc="We offer family-friendly activities and services, including kids' clubs and family accommodations."
             />
             <FaqItem
-              title="What amenities are included in the rooms ?"
+              title="Are there spa services at the hotel?"
               disc="We prioritize guest safety with 24/7 security personnel, surveillance systems, and secure key card access to guest areas."
             />
             <FaqItem
-              title="What amenities are included in the rooms ?"
+              title="How can I provide feedback about my stay?"
               disc="Select properties feature full-service spas offering massages, facials, and other treatments."
             />
             <FaqItem
-              title="What amenities are included in the rooms ?"
+              title="Are there any special packages currently available?"
               disc="Feedback can be provided directly at the front desk upon checkout, through our website, or via the post-stay email survey."
             />
             <FaqItem
-              title="What amenities are included in the rooms ?"
+              title="Is there a business center available to guests?"
               disc="Check our website or contact us directly for information on seasonal packages, special events, and promotions."
             />
             <FaqItem
-              title="What amenities are included in the rooms ?"
+              title="What is the process for items left behind in the hotel?"
               disc="Yes, our business center provides computers, printers, and other office supplies and services."
             />
             <FaqItem
-              title="What amenities are included in the rooms ?"
+              title="Do you have any environmentally friendly practices at your hotels?"
               disc="We are committed to sustainability with practices including energy-efficient utilities, recycling programs, and eco-friendly amenities."
             />
           </div>

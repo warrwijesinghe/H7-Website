@@ -178,11 +178,27 @@
 
 
 @media (max-width: 768px) {
+    .footer_title{
+        font-size: 1.8rem;
+    }
+
+    .footer_nav{
+        font-size: 1.6rem;
+    }
+
+    .footer_contact_title{
+        font-size: 1.6rem;
+    }
+    
+    .footer_contact_number{
+        font-size: 1.4rem;
+    }
+
     .footer{
         text-align: center;
         display: grid;
         grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: 12rem 8rem 50rem 24rem;
+        grid-template-rows: 14rem 8rem 56rem 24rem;
         color: #fff;
         grid-gap: 15px;
         position: relative;

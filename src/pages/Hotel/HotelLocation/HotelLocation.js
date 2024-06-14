@@ -82,9 +82,9 @@ const HotelLocation = () => {
           <h1 className="heading-primary">Most Attractions</h1>
 
           <div className={styles.attraction}>
-            <img src="https://picsum.photos/400" alt="menu ico" />
-            <img src="https://picsum.photos/400" alt="menu ico" />
-            <img src="https://picsum.photos/400" alt="menu ico" />
+            <img src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg" alt="menu ico" />
+            <img src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg" alt="menu ico" />
+            <img src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg" alt="menu ico" />
 
             <div className={styles.attraction_content}>
               <h2>Hakgala Gardens</h2>
@@ -105,17 +105,17 @@ const HotelLocation = () => {
 
           <div className={`grid col-3 ${styles.mobile_grid}`}>
             <OfferCard
-              cardImage="https://picsum.photos/400"
+              cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               title="A Limited Time Hikkaduwa"
               desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
             />
             <OfferCard
-              cardImage="https://picsum.photos/400"
+              cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               title="A Limited Time Hikkaduwa"
               desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
             />
             <OfferCard
-              cardImage="https://picsum.photos/400"
+              cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               title="A Limited Time Hikkaduwa"
               desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
             />

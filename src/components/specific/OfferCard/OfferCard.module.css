@@ -81,5 +81,8 @@
 @media (max-width: 768px) {
     .offer_card {
         min-width: 32rem;
+        margin: 0 2.2rem;
+        box-shadow: none;
+        border: 0.1rem solid #daf8e6;
     }
 }

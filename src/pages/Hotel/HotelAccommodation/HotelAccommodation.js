@@ -5,6 +5,7 @@ import AccommodationCard from "../../../components/specific/AccommodationCard/Ac
 import StayUs from "../../../components/common/StayUs/StayUs";
 import Button from "../../../components/common/Button/Button";
 import RoomCard from "../../../components/specific/RoomCard/RoomCard";
+import Carousel from "../../../components/specific/Carousel/Carousel";
 
 const HotelAccommodation = () => {
   return (
@@ -29,7 +30,7 @@ const HotelAccommodation = () => {
             hill station paradise."
           </p>
           <AccommodationCard
-            logo="https://picsum.photos/400"
+            logo="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
             title="Junior Suite"
             subtitle="Rooms Size : 150 Sqm"
             description="Lorem ipsum dolor sit amTo be a top-tier luxury hospitality provider in SriLanka, known globally for our innovative services, exceptional care, and eco-friendly practiceset,"
@@ -37,7 +38,7 @@ const HotelAccommodation = () => {
           />
 
           <AccommodationCard
-            logo="https://picsum.photos/400"
+            logo="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
             title="Junior Suite"
             subtitle="Rooms Size : 150 Sqm"
             description="Lorem ipsum dolor sit amTo be a top-tier luxury hospitality provider in SriLanka, known globally for our innovative services, exceptional care, and eco-friendly practiceset,"
@@ -45,7 +46,7 @@ const HotelAccommodation = () => {
           />
 
           <AccommodationCard
-            logo="https://picsum.photos/400"
+            logo="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
             title="Junior Suite"
             subtitle="Rooms Size : 150 Sqm"
             description="Lorem ipsum dolor sit amTo be a top-tier luxury hospitality provider in SriLanka, known globally for our innovative services, exceptional care, and eco-friendly practiceset,"
@@ -57,43 +58,84 @@ const HotelAccommodation = () => {
         <div className="container text-center">
           <div className={styles.delux_rooms}>
             <h1 className={styles.room_title}>Delux Rooms</h1>
-            <div className={`grid col-3 ${styles.mobile_grid}`}>
-                <RoomCard 
-                    cardImage="https://picsum.photos/400"
-                    title="Double Dulx Room 01"
-                    room={104}
-                    
+            <div className="desktop">
+              <div className={`grid col-3 ${styles.mobile_grid}`}>
+                <RoomCard
+                  cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                  title="Double Dulx Room 01"
+                  room={104}
                 />
-                <RoomCard 
-                    cardImage="https://picsum.photos/400"
-                    title="Double Dulx Room 01"
-                    room={104}
+                <RoomCard
+                  cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                  title="Double Dulx Room 01"
+                  room={104}
                 />
-                <RoomCard 
-                    cardImage="https://picsum.photos/400"
-                    title="Double Dulx Room 01"
-                    room={104}
+                <RoomCard
+                  cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                  title="Double Dulx Room 01"
+                  room={104}
                 />
+              </div>
+            </div>
+            <div className="mobile">
+              <Carousel>
+                <RoomCard
+                  cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                  title="Double Dulx Room 01"
+                  room={104}
+                />
+                <RoomCard
+                  cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                  title="Double Dulx Room 01"
+                  room={104}
+                />
+                <RoomCard
+                  cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                  title="Double Dulx Room 01"
+                  room={104}
+                />
+              </Carousel>
             </div>
           </div>
           <div className={styles.suit_rooms}>
             <h1 className={styles.room_title}>Suit Rooms</h1>
-            <div className={`grid col-3 ${styles.mobile_grid}`}>
-            <RoomCard 
-                    cardImage="https://picsum.photos/400"
-                    title="Double Dulx Room 01"
-                    room={104}
+            <div className="desktop">
+              <div className={`grid col-3 ${styles.mobile_grid}`}>
+                <RoomCard
+                  cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                  title="Double Dulx Room 01"
+                  room={104}
                 />
-                <RoomCard 
-                    cardImage="https://picsum.photos/400"
-                    title="Double Dulx Room 01"
-                    room={104}
+                <RoomCard
+                  cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                  title="Double Dulx Room 01"
+                  room={104}
                 />
-                <RoomCard 
-                    cardImage="https://picsum.photos/400"
-                    title="Double Dulx Room 01"
-                    room={104}
+                <RoomCard
+                  cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                  title="Double Dulx Room 01"
+                  room={104}
                 />
+              </div>
+            </div>
+            <div className="mobile">
+              <Carousel>
+                <RoomCard
+                  cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                  title="Double Dulx Room 01"
+                  room={104}
+                />
+                <RoomCard
+                  cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                  title="Double Dulx Room 01"
+                  room={104}
+                />
+                <RoomCard
+                  cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                  title="Double Dulx Room 01"
+                  room={104}
+                />
+              </Carousel>
             </div>
           </div>
 
@@ -104,7 +146,7 @@ const HotelAccommodation = () => {
           </p>
 
           <Button type="button" variant="primary">
-                Book Now
+            Book Now
           </Button>
         </div>
       </section>

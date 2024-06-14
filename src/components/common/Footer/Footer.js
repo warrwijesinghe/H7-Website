@@ -177,7 +177,9 @@ const Footer = () => {
             <li>Terms</li>
             <li>Sitemap</li>
           </ul>
-          <div className={styles.copyright_language}></div>
+          <div className={styles.copyright_language}>
+          <div id="google_translate_element"></div>
+          </div>
         </div>
       </div>
     </div>

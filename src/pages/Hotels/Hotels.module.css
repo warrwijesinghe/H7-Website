@@ -4,69 +4,12 @@
     padding-bottom: 2rem;
 }
 
-.intro_img{
-    padding: 2rem 0;
-    height: auto;
-    width: 100%;
-}
-
 .hotels_ex_section{
     padding-bottom: 4rem;
 }
 
 .hotels_ex_section:first-child{
     padding-top: 4rem;
-}
-
-.why_stay_section{
-    background-color: var(--primary-light-box-color);
-    padding: 4rem 0;
-}
-
-.stay_section {
-    padding: 4rem 0;
-}
-
-.stay_card_title {
-    font-size: 3.3rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    width: 60%;
-}
-
-.stay_card_description {
-    font-size: 1.4rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-}
-
-
-
-.stay_form_grid{
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    margin-bottom: 2.8rem;
-}
-
-.stay_social{
-    display: flex;
-    gap: 2.8rem;
-}
-
-.stay_social_ico{
-    width: 4rem;
-    height: 4rem;
-    background-color: var(--primary-color);
-    border-radius: 50%;
-    position: relative;
-}
-
-.stay_social_ico img{
-    height: 1.6rem;
-    position: absolute;
-    top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .offer_section {
@@ -93,6 +36,10 @@
 }
 
 @media (max-width: 768px) {
+    .book_info_title {
+        width: 100%;
+    }
+
     .mobile_grid{
         overflow-x: scroll;
         padding-bottom: 2rem;

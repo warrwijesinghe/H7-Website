@@ -1,9 +1,18 @@
 .card {
     position: relative;
     min-height: 45rem;
+    max-width: 35rem;
+    min-width: 35rem;
     text-align: center;
     box-shadow: 2px 2px 28.9px 9px #0000001A;
 
+}
+
+.full_width{
+    max-width: 98%;
+    min-width: 98%;
+    border: 0.1rem solid #daf8e6;
+    box-shadow: none;
 }
 
 .card_logo {
@@ -46,6 +55,11 @@
 .card_description {
     font-size: 1.2rem;
     line-height: 1.7;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card_button{
@@ -80,5 +94,6 @@
 @media (max-width: 768px) {
     .card {
         min-width: 26rem;
+        margin: 0 2.2rem;
     }
 }

@@ -8,7 +8,7 @@ const SliderLeft = () => {
     <div className={styles.sliders}>
       <div className={styles.slide}>
         <img
-          src="https://picsum.photos/400"
+          src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
           alt="slider"
           className={styles.slide_image}
         />
@@ -23,7 +23,7 @@ const SliderLeft = () => {
       <div className={styles.next_slide}>
         <div className={styles.next_slider_image}>
           <img
-            src="https://picsum.photos/400"
+            src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
             alt="slider"
             className={styles.slide_image}
           />

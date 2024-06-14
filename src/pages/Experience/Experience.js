@@ -1,23 +1,63 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Experience.module.css";
 import logo from "../../assets/images/logo-ne.png";
-import EventCard from "../../components/specific/EventCard/EventCard";
-import Button from "../../components/common/Button/Button";
-import Input from "../../components/common/Input/Input";
 
-import facebookIco from "../../assets/icons/facebook-ico.svg";
-import linkedinIco from "../../assets/icons/linkedin-ico.svg";
-import instragramIco from "../../assets/icons/instragram-ico.svg";
-import youtubeIco from "../../assets/icons/youtube-ico.svg";
-import tweetIco from "../../assets/icons/tweet-ico.svg";
 import OfferCard from "../../components/specific/OfferCard/OfferCard";
 import Partners from "../../components/specific/Partners/Partners";
 import Card from "../../components/specific/Card/Card";
 import HeroSection from "../../components/common/HeroSection/HeroSection";
 import FilterCard from "../../components/specific/FilterCard/FilterCard";
+import { fetchPropertyText, fetchWebBanners } from "../../api/apiClient";
+import defaultImg from "../../assets/images/default.jpg";
+import StayUs from "../../components/common/StayUs/StayUs";
+import Carousel from "../../components/specific/Carousel/Carousel";
 
 const Experience = () => {
   const tours = Array.from({ length: 6 });
+  const [propertyText, setPropertyText] = useState(null);
+  const [banners, setBanners] = useState(null);
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [textData, bannerData] = await Promise.all([
+          fetchPropertyText("Group", "Experiences"),
+          fetchWebBanners("Group", "Experiences"),
+        ]);
+
+        setPropertyText(textData);
+        setBanners(bannerData);
+      } catch (err) {
+        setError("Failed to fetch data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div className={styles.loading}>Loading...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
+  }
+
+  const visitBannerStyle = {
+    "background-image": `url('${
+      banners[0]?.banner_image_urls[0]?.imgeUrl || defaultImg
+    }')`,
+    "background-size": "cover",
+    "background-position": "center center",
+  };
+
+  console.log("text", propertyText);
+  console.log("banner", banners);
 
   return (
     <div>
@@ -25,18 +65,11 @@ const Experience = () => {
 
       <section className={styles.intro_ex_section}>
         <div className="container text-center">
-          <h1 className="heading-secondary">Our Experiences</h1>
+          <h1 className="heading-secondary">
+            {propertyText?.welcome_Header?.text || ""}
+          </h1>
           <p className="description mb-sm">
-            Welcome to Heaven Seven Hotels, where we offer a diverse array of
-            experiences designed to enrich your stay and immerse you in the
-            culture and natural beauty of our surroundings. Discover the
-            tranquility of nature walks, the thrill of game driving, and the joy
-            of rural bike explorations. Challenge yourself with a game of pool,
-            or dive into the local cuisine with our cooking classes and
-            exquisite dining options. Each day trip and adventure is curated to
-            ensure you capture the essence of our destinations and create
-            memories that last a lifetime. Join us and transform your travel
-            into a journey of discovery and delight
+            {propertyText?.welcome_paragraph_1?.text || ""}
           </p>
         </div>
       </section>
@@ -50,7 +83,7 @@ const Experience = () => {
               <Card
                 key={index}
                 logo={logo}
-                cardImage="https://picsum.photos/400"
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
                 title="Kandy"
                 subtitle="Lorem ipsum dolor sit amet"
                 desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
@@ -67,35 +100,54 @@ const Experience = () => {
           <span className="subheading">Heaven Seven Hotel</span>
           <h1 className="heading-primary mb-lg">Special Offers</h1>
 
-          <div className={`grid col-3 ${styles.mobile_grid}`}>
-            <OfferCard
-              cardImage="https://picsum.photos/400"
-              title="A Limited Time Hikkaduwa"
-              desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-            />
-            <OfferCard
-              cardImage="https://picsum.photos/400"
-              title="A Limited Time Hikkaduwa"
-              desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-            />
-            <OfferCard
-              cardImage="https://picsum.photos/400"
-              title="A Limited Time Hikkaduwa"
-              desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-            />
+          <div className="desktop">
+            <div className={`grid col-3 ${styles.mobile_grid}`}>
+              <OfferCard
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="A Limited Time Hikkaduwa"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+              />
+              <OfferCard
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="A Limited Time Hikkaduwa"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+              />
+              <OfferCard
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="A Limited Time Hikkaduwa"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+              />
+            </div>
+          </div>
+
+          <div className="mobile">
+            <Carousel>
+              <OfferCard
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="A Limited Time Hikkaduwa"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+              />
+              <OfferCard
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="A Limited Time Hikkaduwa"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+              />
+              <OfferCard
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="A Limited Time Hikkaduwa"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+              />
+            </Carousel>
           </div>
         </div>
       </section>
 
-      <section className={styles.visit_section}>
+      <section className={styles.visit_section} style={visitBannerStyle}>
         <div className="container text-center">
           <div className={styles.visit_card}>
-            <h3 className="heading-tertiary">Visit Haven Seven</h3>
+            <h3 className="heading-tertiary">{banners[0]?.displayName}</h3>
             <p className={styles.visit_card_description}>
-              Choosing Heaven Seven Hotels means choosing a memorable
-              experience. Browse each of our hotel pages to learn more about
-              what makes each property unique and discover the perfect backdrop
-              for your next getaway
+              {banners[0]?.description}
             </p>
           </div>
         </div>
@@ -103,43 +155,7 @@ const Experience = () => {
 
       <Partners />
 
-      <section className={styles.stay_section}>
-        <div className="container">
-          <EventCard logo="https://picsum.photos/800" isLeft={false}>
-            <h1 className={styles.stay_card_title}>Stay with Us</h1>
-            <p className={styles.stay_card_description}>
-              Stay connected and informed by following us on social media and
-              signing up for our newsletter to receive the latest news, offers,
-              and insights directly from Heaven Seven Hotels.
-            </p>
-
-            <div className={styles.stay_form_grid}>
-              <Input type="text" placeholder="RECEIVE NEWSLETTERS AND OFFERS" />
-              <Button type="button" variant="primary">
-                Submit
-              </Button>
-            </div>
-
-            <div className={styles.stay_social}>
-              <div className={styles.stay_social_ico}>
-                <img src={facebookIco} alt="facebook" />
-              </div>
-              <div className={styles.stay_social_ico}>
-                <img src={linkedinIco} alt="linkin" />
-              </div>
-              <div className={styles.stay_social_ico}>
-                <img src={instragramIco} alt="instagram" />
-              </div>
-              <div className={styles.stay_social_ico}>
-                <img src={youtubeIco} alt="youtube" />
-              </div>
-              <div className={styles.stay_social_ico}>
-                <img src={tweetIco} alt="tweet" />
-              </div>
-            </div>
-          </EventCard>
-        </div>
-      </section>
+      <StayUs />
     </div>
   );
 };

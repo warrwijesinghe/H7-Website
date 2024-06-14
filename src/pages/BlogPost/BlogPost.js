@@ -17,7 +17,7 @@ const BlogPost = () => {
             <div className={styles.left_post}>
               <div className={styles.post_banner}>
                 <img
-                  src="https://picsum.photos/1000"
+                  src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
                   alt="Heaven Seven Hotel"
                   className={styles.banner_img}
                 />
@@ -87,7 +87,7 @@ const BlogPost = () => {
               <div className={styles.news_card}>
                 <div className={styles.news_card_banner}>
                   <img
-                    src="https://picsum.photos/400"
+                    src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
                     alt="Heaven Seven Hotel"
                     className={styles.blog_img}
                   />
@@ -106,7 +106,7 @@ const BlogPost = () => {
               <div className={styles.news_card}>
                 <div className={styles.news_card_banner}>
                   <img
-                    src="https://picsum.photos/400"
+                    src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
                     alt="Heaven Seven Hotel"
                     className={styles.blog_img}
                   />
@@ -125,7 +125,7 @@ const BlogPost = () => {
               <div className={styles.news_card}>
                 <div className={styles.news_card_banner}>
                   <img
-                    src="https://picsum.photos/400"
+                    src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
                     alt="Heaven Seven Hotel"
                     className={styles.blog_img}
                   />
@@ -144,7 +144,7 @@ const BlogPost = () => {
               <div className={styles.news_card}>
                 <div className={styles.news_card_banner}>
                   <img
-                    src="https://picsum.photos/400"
+                    src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
                     alt="Heaven Seven Hotel"
                     className={styles.blog_img}
                   />
@@ -175,21 +175,21 @@ const BlogPost = () => {
               </div>
               <div className={styles.card_list}>
                 <BlogCard
-                  cardImage="https://picsum.photos/400"
+                  cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
                   title="Lorem ipsum dolor"
                   author="By Johenn"
                   date="20 / 12 / 2024"
                   desc="Lorem ipsum dolor sit amTo be a top-tieLorem ipsum dolor sit amTo be a top-tieLorem ipsum dolor sit"
                 />
                 <BlogCard
-                  cardImage="https://picsum.photos/400"
+                  cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
                   title="Lorem ipsum dolor"
                   author="By Johenn"
                   date="20 / 12 / 2024"
                   desc="Lorem ipsum dolor sit amTo be a top-tieLorem ipsum dolor sit amTo be a top-tieLorem ipsum dolor sit"
                 />
                 <BlogCard
-                  cardImage="https://picsum.photos/400"
+                  cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
                   title="Lorem ipsum dolor"
                   author="By Johenn"
                   date="20 / 12 / 2024"
@@ -204,7 +204,7 @@ const BlogPost = () => {
               </div>
               <div className="grid">
                 <BlogCard
-                  cardImage="https://picsum.photos/400"
+                  cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
                   title="Lorem ipsum dolor"
                   author="By Johenn"
                   date="20 / 12 / 2024"

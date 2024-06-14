@@ -7,7 +7,7 @@ import RouterLink from "./config/RouterLink";
 
 const App = () => {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <div className="app">
         <RouterLink />
       </div>

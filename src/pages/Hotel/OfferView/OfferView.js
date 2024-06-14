@@ -14,7 +14,7 @@ const OfferView = () => {
         <h1 className="heading-secondary">Exclusive Offers</h1>
           <div className={styles.offer_grid}>
             <img
-              src="https://picsum.photos/400"
+              src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               alt="banner"
               className={styles.logo_section}
             />
@@ -56,17 +56,17 @@ const OfferView = () => {
         <div className="container">
           <div className="grid col-3">
             <OfferCard
-              cardImage="https://picsum.photos/400"
+              cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               title="A Limited Time Hikkaduwa"
               desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
             />
             <OfferCard
-              cardImage="https://picsum.photos/400"
+              cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               title="A Limited Time Hikkaduwa"
               desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
             />
             <OfferCard
-              cardImage="https://picsum.photos/400"
+              cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               title="A Limited Time Hikkaduwa"
               desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
             />

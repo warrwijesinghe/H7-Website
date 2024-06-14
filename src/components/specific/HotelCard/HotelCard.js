@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./HotelCard.module.css";
 import { Link } from "react-router-dom";
 import arrow from '../../../assets/icons/arrow-right-ico.svg';
+import defaultImg from '../../../assets/images/default.jpg';
 
 
 const HotelCard = ({title, subtitle, desc, logo, image1, image2, image3}) => {
@@ -10,7 +11,7 @@ const HotelCard = ({title, subtitle, desc, logo, image1, image2, image3}) => {
     <div className={styles.hotel_card}>
       <div className={styles.hotel_card_image}>
         <img
-          src={logo}
+          src={logo || defaultImg}
           alt="heaven Seven"
           className={styles.hotel_card_img}
         />
@@ -30,15 +31,16 @@ const HotelCard = ({title, subtitle, desc, logo, image1, image2, image3}) => {
         </Link>
       </div>
       <div className={styles.hotel_card_gallery}>
-        <div className={styles.hotel_card_gallery_img}>
-          <img src={image1} alt="heaven seven gallery 1" />
+      <div className={styles.hotel_card_gallery_img}>
+          <img src={image1 || defaultImg} alt="heaven seven gallery 1" />
         </div>
         <div className={styles.hotel_card_gallery_img}>
-          <img src={image2} alt="heaven seven gallery 1" />
+          <img src={image2 || defaultImg} alt="heaven seven gallery 1" />
         </div>
         <div className={styles.hotel_card_gallery_img}>
-          <img src={image3} alt="heaven seven gallery 1" />
+          <img src={image3 || defaultImg} alt="heaven seven gallery 1" />
         </div>
+        
 
         <div className={styles.dots}>
           <div className={`${styles.dot} ${styles.active}`}></div>

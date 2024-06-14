@@ -79,7 +79,7 @@ const HotelContact = () => {
         <div className="container">
           <div className={`grid col-2 ${styles.mobile_grid}`}>
             <div className={styles.hotel}>
-              <img src="https://picsum.photos/400" alt="Heaven Seven Hotel" />
+              <img src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg" alt="Heaven Seven Hotel" />
               <div className={styles.hotel_content}>
                 <h1 className={styles.hotel_title}>Kandy</h1>
                 <p className={styles.hotel_desc}>
@@ -92,7 +92,7 @@ const HotelContact = () => {
               </div>
             </div>
             <div className={styles.hotel}>
-              <img src="https://picsum.photos/400" alt="Heaven Seven Hotel" />
+              <img src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg" alt="Heaven Seven Hotel" />
               <div className={styles.hotel_content}>
                 <h1 className={styles.hotel_title}>Nuwara Eliya</h1>
                 <p className={styles.hotel_desc}>

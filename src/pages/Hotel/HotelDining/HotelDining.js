@@ -20,17 +20,17 @@ const HotelDining = () => {
 
           <div className={`grid col-3 ${styles.grid_card} ${styles.mobile_grid}`}>
             <DiningCard
-              cardImage="https://picsum.photos/400"
+              cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               title="Nights Dinner Restaurant"
               desc="Indulge in exquisite dishes crafted with the finest ingredients, complemented by an elegant ambiance and impeccable service. Whether you're seeking a romantic dinner for two or a memorable gathering with friends, our restaurant promises an unforgettable dining journey that delights the senses and satisfies the soul"
             />
             <DiningCard
-              cardImage="https://picsum.photos/400"
+              cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               title="Nights Dinner Restaurant"
               desc="Indulge in exquisite dishes crafted with the finest ingredients, complemented by an elegant ambiance and impeccable service. Whether you're seeking a romantic dinner for two or a memorable gathering with friends, our restaurant promises an unforgettable dining journey that delights the senses and satisfies the soul"
             />
             <DiningCard
-              cardImage="https://picsum.photos/400"
+              cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               title="Nights Dinner Restaurant"
               desc="Indulge in exquisite dishes crafted with the finest ingredients, complemented by an elegant ambiance and impeccable service. Whether you're seeking a romantic dinner for two or a memorable gathering with friends, our restaurant promises an unforgettable dining journey that delights the senses and satisfies the soul"
             />

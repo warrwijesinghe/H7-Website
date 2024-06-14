@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./HotelHome.module.css";
 import HeroSection from "../../../components/common/HeroSection/HeroSection";
 import OfferCard from "../../../components/specific/OfferCard/OfferCard";
@@ -6,43 +6,94 @@ import EventCard from "../../../components/specific/EventCard/EventCard";
 import Button from "../../../components/common/Button/Button";
 import Partners from "../../../components/specific/Partners/Partners";
 import StayUs from "../../../components/common/StayUs/StayUs";
-import { Link } from "react-router-dom";
-import arrowHeadRightIco from "../../../assets/icons/arrow-head-right-ico.svg";
-import arrowHeadLeftIco from "../../../assets/icons/arrow-head-left-ico.svg";
+import { Link, useParams } from "react-router-dom";
+import Carousel from "../../../components/specific/Carousel/Carousel";
+import Card from "../../../components/specific/Card/Card";
+import logo from "../../../assets/images/logo-ne.png";
+import { fetchProperties, fetchPropertyImage, fetchPropertyText, fetchWebBanners } from "../../../api/apiClient";
+import defaultImg from "../../../assets/images/default.jpg";
 
 const HotelHome = () => {
+  let { hotel } = useParams();
+
+  const [propertyText, setPropertyText] = useState(null);
+  const [propertyImages, setPropertyImages] = useState(null);
+  const [properties, setProperties] = useState(null);
+  const [banners, setBanners] = useState(null);
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [textData, imageData, propertiesData, webBanner] = await Promise.all([
+          fetchPropertyText(hotel, "Home"),
+          fetchPropertyImage(hotel, "Gallery", "Gallery", 10),
+          fetchProperties(),
+          fetchWebBanners(hotel, "Home"),
+        ]);
+
+        setPropertyText(textData);
+        setPropertyImages(imageData);
+        setProperties(propertiesData.filter((item) => item.id !== 14));
+        setBanners(webBanner);
+      } catch (err) {
+        console.log(err);
+        setError("Failed to fetch data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [hotel]);
+
+  if (loading) {
+    return <div className={styles.loading}>Loading...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
+  }
+  const filterHotel = properties.find(property => property.shortName === hotel);
+  console.log("text", propertyText);
+  console.log("images", propertyImages);
+  console.log("properties", properties);
+  console.log("banner", banners);
+
   return (
     <div>
       <HeroSection />
       <section className={styles.welcome_section}>
-        <div className="container text-center">
-          <h1 className="heading-secondary mb-lg">
-            Welcome to Heaven Seven Nuwara Eiya
-          </h1>
+        <div className="container">
           <div className={styles.welcome_grid}>
             <div className={styles.welcome_content}>
+              <span className="subheading">{propertyText?.welcome_Subheader?.text || ''}</span>
+              <h1 className={styles.welcome_title}>
+                Heaven Seven <br /> {propertyText?.welcome_Header?.text || ''}
+              </h1>
               <p className={styles.welcome_description}>
-                Heaven Seven, nestled in the picturesque hills of Nuwara Eliya,
-                offers a tranquil escape amidst lush greenery and breathtaking
-                mountain vistas. Conveniently located in the heart of this
-                charming town, Heaven Seven welcomes guests with warm
-                hospitality and modern amenities. The hotel features comfortable
-                rooms adorned with elegant furnishings, ensuring a restful stay
-                for weary travelers. Guests can indulge in delicious cuisine at
-                the on-site restaurant, showcasing a delectable array of local
-                and international dishes. Whether you're seeking adventure or
-                relaxation, Heaven Seven serves as the perfect base for
-                exploring Nuwara Eliya's natural wonders, including cascading
-                waterfalls, tea plantations, and serene lakes. Immerse yourself
-                in the beauty of Sri Lanka's hill country and create
-                unforgettable memories at Heaven Seven.
+              {propertyText?.welcome_paragraph_1?.text || ''}
               </p>
+              <div className={styles.welcome_logo}>
+
+              <img
+                src={logo}
+                alt="heaven seven logo"
+                
+              />
+              </div>
             </div>
             <div className={styles.welcome_image}>
-              <img src="https://picsum.photos/400" alt="welcome logo" />
+              <img
+                src={filterHotel?.property_image_urls[0]?.imgeUrl || defaultImg}
+                alt={filterHotel?.property_image_urls[0]?.imgAlt || 'banner image'}
+                className={styles.welcome_banner}
+              />
             </div>
           </div>
-          <h1 className="heading-secondary mb-lg">
+          {/* <h1 className="heading-secondary mb-lg">
             Where Tranquility Meets Luxury in Sri Lanka's Highlands
           </h1>
           <div className="description">
@@ -59,36 +110,36 @@ const HotelHome = () => {
             exploring the region's scenic wonders or simply seeking a peaceful
             retreat, our hotel accommodations provide the perfect setting for
             your unforgettable getaway
-          </div>
+          </div> */}
 
           <div className={styles.welcome_gallery}>
             <div className={styles.left_gallery}>
               <img
-                src="https://picsum.photos/800"
-                alt="gallery"
+                src={banners[0]?.banner_image_urls[0]?.imgeUrl}
+                alt={banners[0]?.banner_image_urls[0]?.imgAlt}
                 className={styles.gallery_img}
               />
               <img
-                src="https://picsum.photos/800"
-                alt="gallery"
+                src={banners[1]?.banner_image_urls[0]?.imgeUrl}
+                alt={banners[1]?.banner_image_urls[0]?.imgAlt}
                 className={styles.gallery_img}
               />
             </div>
             <div className={styles.right_gallery}>
               <img
-                src="https://picsum.photos/800"
-                alt="gallery"
+                src={banners[2]?.banner_image_urls[0]?.imgeUrl}
+                alt={banners[2]?.banner_image_urls[0]?.imgAlt}
                 className={styles.gallery_img}
               />
               <img
-                src="https://picsum.photos/800"
-                alt="gallery"
+                src={banners[3]?.banner_image_urls[0]?.imgeUrl}
+                alt={banners[3]?.banner_image_urls[0]?.imgAlt}
                 className={styles.gallery_img}
               />
             </div>
           </div>
           <div className="grid read_more">
-            <Link to={"/special-offers"}>View More</Link>
+            <Link to={"/special-offers"}>View Gallery</Link>
           </div>
         </div>
       </section>
@@ -96,18 +147,15 @@ const HotelHome = () => {
         <div className="container text-center">
           <div className={`grid col-2 ${styles.mobile_dining}`}>
             <div className={styles.dining_banner}>
-              <img src="https://picsum.photos/400" alt="Dining logo" />
+              <img
+                src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                alt="Dining logo"
+              />
             </div>
             <div className={styles.dining_content}>
-              <h1 className="heading-secondary mb-lg">Dining</h1>
+              <h1 className="heading-secondary mb-lg">{propertyText?.secondary_header?.text || ''}</h1>
               <p className={styles.welcome_description}>
-                Indulge in a culinary journey at Heaven Seven's restaurant. From
-                vibrant Sri Lankan flavors to international delights, our menu
-                offers something for every palate. Start your day with a hearty
-                breakfast, enjoy light bites for lunch, and savor gourmet
-                dinners under the stars. With locally sourced ingredients and
-                expertly crafted dishes, dining at Heaven Seven is a memorable
-                experience not to be missed
+              {propertyText?.secondary_paragraph_1?.text || ''}
               </p>
 
               <div className="grid read_more">
@@ -117,18 +165,27 @@ const HotelHome = () => {
           </div>
           <div className={styles.dining_gallery}>
             <div className={styles.dining_gallery_image}>
-              <img src="https://picsum.photos/400" alt="Dining logo" />
+              <img
+                src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                alt="Dining logo"
+              />
             </div>
             <div className={styles.dining_gallery_image}>
-              <img src="https://picsum.photos/400" alt="Dining logo" />
+              <img
+                src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                alt="Dining logo"
+              />
             </div>
             <div className={styles.dining_gallery_image}>
-              <img src="https://picsum.photos/400" alt="Dining logo" />
+              <img
+                src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                alt="Dining logo"
+              />
             </div>
           </div>
         </div>
       </section>
-      <section className={styles.experience_section}>
+      {/* <section className={styles.experience_section}>
         <div className="container text-center">
           <h1 className="heading-secondary mb-lg">
             Unforgettable Experiences Await
@@ -144,7 +201,10 @@ const HotelHome = () => {
           </div>
 
           <div className={styles.experience_grid}>
-            <img src="https://picsum.photos/400" alt="Dining logo" />
+            <img
+              src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+              alt="Dining logo"
+            />
             <p className={styles.welcome_description}>
               Indulge in a culinary journey at Heaven Seven's restaurant. From
               vibrant Sri Lankan flavors to international delights, our menu
@@ -173,11 +233,18 @@ const HotelHome = () => {
               small museum at the Visitors center that exhibits interesting
               display
             </p>
-            <img src="https://picsum.photos/400" alt="Dining logo" className={styles.experience_img} />
+            <img
+              src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+              alt="Dining logo"
+              className={styles.experience_img}
+            />
           </div>
 
           <div className={styles.experience_slider}>
-            <img src="https://picsum.photos/400" alt="Dining logo" />
+            <img
+              src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+              alt="Dining logo"
+            />
             <button type="button" className={styles.slide_next_btn}>
               <img src={arrowHeadRightIco} alt="next" />
             </button>
@@ -186,10 +253,164 @@ const HotelHome = () => {
             </button>
           </div>
         </div>
+      </section> */}
+
+      <section className={styles.experience_explore}>
+        <div className="container text-center">
+          <span className="subheading">Lorem ipsum dolor sit amet.</span>
+          <h1 className="heading-primary mb-lg">Explore Nuwara Eliya</h1>
+          <div className="desktop">
+            <div className="grid col-3">
+              <Card
+                logo={logo}
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="Kandy"
+                subtitle="Lorem ipsum dolor sit amet"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+                tag={true}
+                button={true}
+                isFullWidth={true}
+              />
+              <Card
+                logo={logo}
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="Kandy"
+                subtitle="Lorem ipsum dolor sit amet"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+                tag={true}
+                button={true}
+                isFullWidth={true}
+              />
+              <Card
+                logo={logo}
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="Kandy"
+                subtitle="Lorem ipsum dolor sit amet"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+                tag={true}
+                button={true}
+                isFullWidth={true}
+              />
+            </div>
+          </div>
+          <div className="mobile">
+            <Carousel>
+              <Card
+                logo={logo}
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="Kandy"
+                subtitle="Lorem ipsum dolor sit amet"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+                tag={true}
+                button={true}
+                isFullWidth={true}
+              />
+              <Card
+                logo={logo}
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="Kandy"
+                subtitle="Lorem ipsum dolor sit amet"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+                tag={true}
+                button={true}
+                isFullWidth={true}
+              />
+              <Card
+                logo={logo}
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="Kandy"
+                subtitle="Lorem ipsum dolor sit amet"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+                tag={true}
+                button={true}
+                isFullWidth={true}
+              />
+            </Carousel>
+          </div>
+        </div>
       </section>
+
+      <section className={styles.experience_section}>
+        <div className="container text-center">
+          <span className="subheading">Lorem ipsum dolor sit amet.</span>
+          <h1 className="heading-primary mb-lg">Heaven Seven Experience</h1>
+          <div className="desktop">
+            <div className="grid col-3">
+              <Card
+                logo={logo}
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="Kandy"
+                subtitle="Lorem ipsum dolor sit amet"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+                tag={true}
+                button={true}
+                isFullWidth={true}
+              />
+              <Card
+                logo={logo}
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="Kandy"
+                subtitle="Lorem ipsum dolor sit amet"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+                tag={true}
+                button={true}
+                isFullWidth={true}
+              />
+              <Card
+                logo={logo}
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="Kandy"
+                subtitle="Lorem ipsum dolor sit amet"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+                tag={true}
+                button={true}
+                isFullWidth={true}
+              />
+            </div>
+          </div>
+          <div className="mobile">
+            <Carousel>
+              <Card
+                logo={logo}
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="Kandy"
+                subtitle="Lorem ipsum dolor sit amet"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+                tag={true}
+                button={true}
+                isFullWidth={true}
+              />
+              <Card
+                logo={logo}
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="Kandy"
+                subtitle="Lorem ipsum dolor sit amet"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+                tag={true}
+                button={true}
+                isFullWidth={true}
+              />
+              <Card
+                logo={logo}
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="Kandy"
+                subtitle="Lorem ipsum dolor sit amet"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+                tag={true}
+                button={true}
+                isFullWidth={true}
+              />
+            </Carousel>
+          </div>
+        </div>
+      </section>
+
       <section className={styles.book_info_section}>
         <div className="container text-center">
-          <EventCard logo="https://picsum.photos/800" isLeft={true}>
+          <EventCard
+            logo="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+            isLeft={true}
+          >
             <h1 className={styles.book_info_title}>Book Your Stay</h1>
             <p className={styles.book_info_description}>
               Choosing Heaven Seven Hotels means choosing a memorable
@@ -208,23 +429,44 @@ const HotelHome = () => {
         <div className="container">
           <span className="subheading">Heaven Seven Hotel</span>
           <h1 className="heading-primary mb-lg">Special Offers</h1>
+          <div className="desktop">
+            <div className={`grid col-3  ${styles.mobile_grid}`}>
+              <OfferCard
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="A Limited Time Hikkaduwa"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+              />
+              <OfferCard
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="A Limited Time Hikkaduwa"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+              />
+              <OfferCard
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="A Limited Time Hikkaduwa"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+              />
+            </div>
+          </div>
 
-          <div className={`grid col-3 ${styles.mobile_grid}`}>
-            <OfferCard
-              cardImage="https://picsum.photos/400"
-              title="A Limited Time Hikkaduwa"
-              desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-            />
-            <OfferCard
-              cardImage="https://picsum.photos/400"
-              title="A Limited Time Hikkaduwa"
-              desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-            />
-            <OfferCard
-              cardImage="https://picsum.photos/400"
-              title="A Limited Time Hikkaduwa"
-              desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-            />
+          <div className="mobile">
+            <Carousel>
+              <OfferCard
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="A Limited Time Hikkaduwa"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+              />
+              <OfferCard
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="A Limited Time Hikkaduwa"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+              />
+              <OfferCard
+                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
+                title="A Limited Time Hikkaduwa"
+                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+              />
+            </Carousel>
           </div>
 
           <div className="read_more">

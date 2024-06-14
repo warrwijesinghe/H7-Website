@@ -17,7 +17,7 @@ const HotelRestaurentView = () => {
         <div className="container">
           <div className={styles.about_restaurant}>
             <img
-              src="https://picsum.photos/400"
+              src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               alt="menu ico"
               className={styles.about_res_banner}
             />
@@ -56,12 +56,12 @@ const HotelRestaurentView = () => {
           </div>
           <div className={styles.about_restaurant}>
           <img
-              src="https://picsum.photos/400"
+              src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               alt="menu ico"
               className={styles.gallery_res}
             />
             <img
-              src="https://picsum.photos/400"
+              src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               alt="menu ico"
               className={styles.gallery_res}
             />
@@ -76,17 +76,17 @@ const HotelRestaurentView = () => {
 
           <div className={`grid col-3 ${styles.mobile_grid}`}>
             <OfferCard
-              cardImage="https://picsum.photos/400"
+              cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               title="A Limited Time Hikkaduwa"
               desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
             />
             <OfferCard
-              cardImage="https://picsum.photos/400"
+              cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               title="A Limited Time Hikkaduwa"
               desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
             />
             <OfferCard
-              cardImage="https://picsum.photos/400"
+              cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               title="A Limited Time Hikkaduwa"
               desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
             />

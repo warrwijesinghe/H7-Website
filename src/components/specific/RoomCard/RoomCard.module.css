@@ -38,6 +38,9 @@
 @media (max-width: 768px) {
     .card {
         min-width: 26rem;
+        margin: 0 2rem;
+        box-shadow: none;
+        border: 0.1rem solid #daf8e6;
     }
 }
 

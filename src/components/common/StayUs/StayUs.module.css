@@ -13,6 +13,11 @@
     font-size: 1.4rem;
     line-height: 1.6;
     margin-bottom: 2rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .stay_form_grid {
@@ -22,12 +27,16 @@
 }
 
 .stay_social {
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
     gap: 2.8rem;
 }
 
 .stay_social_ico {
-    width: 4rem;
+    min-width: 4rem;
+    max-width: 4rem;
     height: 4rem;
     background-color: var(--primary-color);
     border-radius: 50%;
@@ -51,5 +60,17 @@
     .stay_card_title {
         text-align: center;
         width: 100%;
+    }
+
+    .stay_social {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2.8rem;
+    }
+
+    .stay_social{
+        gap: 1.3rem;
     }
 }

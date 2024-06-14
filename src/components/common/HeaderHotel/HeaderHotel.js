@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import styles from './HeaderHotel.module.css';
 // import searchIco from '../../../assets/icons/search-ico.svg';
@@ -9,9 +9,21 @@ import { useMenu } from "../../../contexts/MenuContext";
 const HeaderHotel = () => {
   const { toggleMenu } = useMenu();
   let { hotel } = useParams();
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 450);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isSticky ? styles.sticky : styles.absolute}`}>
     <div className={styles.container}>
       <div className="left-nav">
         <Button type="button" variant="primary" fullWidth={false} onClick={toggleMenu}>
@@ -27,16 +39,22 @@ const HeaderHotel = () => {
             <Link  className={styles.nav_link} to={`/hotel/${hotel}`}>Home</Link>
           </li>
           <li>
-            <Link className={styles.nav_link} to="/hotels">Hotels</Link>
+            <Link className={styles.nav_link} to={`/accommodation/${hotel}`}>Accommodation</Link>
+          </li>
+          <li>
+            <Link className={styles.nav_link} to={`/offers/${hotel}`}>Special Offers</Link>
+          </li>
+          <li>
+            <Link className={styles.nav_link} to={`/gallery/${hotel}`}>Gallery</Link>
+          </li>
+          <li>
+            <Link className={styles.nav_link} to={`/contact/${hotel}`}>Contact Us</Link>
           </li>
           <li>
             <Link className={styles.nav_link} to={`/experience/${hotel}`}>Experiences</Link>
           </li>
           <li>
-            <Link className={styles.nav_link} to="/blog">Blog</Link>
-          </li>
-          <li>
-            <Link className={styles.nav_link} to="/about">About</Link>
+            <Link className={styles.nav_link} to="/">Heaven Seven</Link>
           </li>
         </ul>
       </nav>

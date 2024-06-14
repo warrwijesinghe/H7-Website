@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./About.module.css";
 import HeroSection from "../../components/common/HeroSection/HeroSection";
 import StayUs from "../../components/common/StayUs/StayUs";
@@ -6,8 +6,58 @@ import Partners from "../../components/specific/Partners/Partners";
 import Card from "../../components/specific/Card/Card";
 import logo from "../../assets/images/logo-ne.png";
 import Button from "../../components/common/Button/Button";
+import { fetchProperties, fetchPropertyText, fetchWebBanners } from "../../api/apiClient";
+import defaultImg from '../../assets/images/default.jpg';
 
 const About = () => {
+  const [propertyText, setPropertyText] = useState(null);
+  const [properties, setProperties] = useState(null);
+  const [banners, setBanners] = useState(null);
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [textData, propertiesData, bannerData] = await Promise.all([
+          fetchPropertyText('Group', 'Home'),
+          fetchProperties(),
+          fetchWebBanners("Group", "About"),
+        ]);
+
+        setPropertyText(textData);
+        setProperties(propertiesData.filter(item => item.id !== 14));
+        setBanners(bannerData);
+      } catch (err) {
+        setError("Failed to fetch data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div className={styles.loading}>Loading...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
+  }
+
+  console.log('text', propertyText);
+  console.log('properties', properties);
+  console.log('banners', banners);
+
+  const miceBannerStyle = {
+    'background': 
+    `linear-gradient(rgba(24, 26, 32, 0.8), rgba(24, 26, 32, 0.8)),
+    url('${banners[2]?.banner_image_urls[0]?.imgeUrl || defaultImg}')`,
+    'background-size': 'cover',
+    'background-position': 'center center'
+  }
   return (
     <div>
       <HeroSection />
@@ -16,20 +66,17 @@ const About = () => {
           <div className={styles.about_card}>
             <div className={`${styles.about_card_image} ${styles.right_image}`}>
               <img
-                src="https://picsum.photos/400"
-                alt="heaven Seven"
+                src={banners[0]?.banner_image_urls[0]?.imgeUrl}
+                alt={banners[0]?.banner_image_urls[0]?.imgAlt}
                 className={styles.about_card_img}
               />
             </div>
             <div
               className={`${styles.about_card_content} ${styles.left_content}`}
             >
-              <h1 className={styles.about_card_title}>Our Mission</h1>
+              <h1 className={styles.about_card_title}>{banners[0]?.displayName}</h1>
               <p className={styles.about_card_description}>
-                Lorem ipsum dolor sit amTo be a top-tier luxury hospitality
-                provider in SriLanka, known globally for our innovative
-                services, exceptional care, and eco-friendly practiceset,
-                consectetur adipiscing elit, sed do eiualiquip ex ea commodo
+              {banners[0]?.description}
               </p>
             </div>
           </div>
@@ -40,20 +87,17 @@ const About = () => {
           <div className={styles.about_card}>
             <div className={`${styles.about_card_image} ${styles.left_image}`}>
               <img
-                src="https://picsum.photos/400"
-                alt="heaven Seven"
+                src={banners[1]?.banner_image_urls[0]?.imgeUrl}
+                alt={banners[1]?.banner_image_urls[0]?.imgAlt}
                 className={styles.about_card_img}
               />
             </div>
             <div
               className={`${styles.about_card_content} ${styles.right_content}`}
             >
-              <h1 className={styles.about_card_title}>Our Vision</h1>
+              <h1 className={styles.about_card_title}>{banners[1]?.displayName}</h1>
               <p className={styles.about_card_description}>
-                Lorem ipsum dolor sit amTo be a top-tier luxury hospitality
-                provider in SriLanka, known globally for our innovative
-                services, exceptional care, and eco-friendly practiceset,
-                consectetur adipiscing elit, sed do eiualiquip ex ea commodo
+              {banners[1]?.description}
               </p>
             </div>
           </div>
@@ -66,7 +110,7 @@ const About = () => {
           <div className={styles.founders}>
             <div className={styles.left_item}>
               <img
-                src="https://picsum.photos/400"
+                src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
                 alt="heaven Seven"
                 className={styles.left_founder}
               />
@@ -79,7 +123,7 @@ const About = () => {
             <div className={styles.right_item}>
               <div className={styles.founder}>
                 <img
-                  src="https://picsum.photos/400"
+                  src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
                   alt="heaven Seven"
                   className={styles.founder_img}
                 />
@@ -91,7 +135,7 @@ const About = () => {
               </div>
               <div className={styles.founder}>
                 <img
-                  src="https://picsum.photos/400"
+                  src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
                   alt="heaven Seven"
                   className={styles.founder_img}
                 />
@@ -105,7 +149,7 @@ const About = () => {
               </div>
               <div className={styles.founder}>
                 <img
-                  src="https://picsum.photos/400"
+                  src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
                   alt="heaven Seven"
                   className={styles.founder_img}
                 />
@@ -120,7 +164,7 @@ const About = () => {
           <div className={styles.director}>
             <div className={styles.director_content}>
               <img
-                src="https://picsum.photos/400"
+                src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
                 alt="heaven Seven"
                 className={styles.director_img}
               />
@@ -182,45 +226,30 @@ const About = () => {
               Life is short, travel often
             </h1>
 
-            <div className={`grid col-3 ${styles.mobile_grid}`}>
+            <div className={`d-flex ${styles.mobile_grid}`}>
+            {properties && properties.map((item) => (
               <Card
+              key={item.id}
                 logo={logo}
-                cardImage="https://picsum.photos/400"
-                title="Kandy"
-                subtitle="Lorem ipsum dolor sit amet"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+                cardImage={item.property_image_urls[0]?.imgeUrl}
+                title={item.shortName}
+                subtitle={item.longName}
+                desc={item.shortDescription}
               />
-              <Card
-                logo={logo}
-                cardImage="https://picsum.photos/400"
-                title="Nuwar Eliya"
-                subtitle="Lorem ipsum dolor sit amet"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
-              <Card
-                logo={logo}
-                cardImage="https://picsum.photos/400"
-                title="Hikkaduwa"
-                subtitle="Lorem ipsum dolor sit amet"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
+              ))}
             </div>
           </div>
         </div>
       </section>
-      <section className={`text-center ${styles.mice_section}`}>
+      <section className={`text-center ${styles.mice_section}`} >
         <div className="container ">
-          <span className="subheading">Welcome To Haven Seven Hotels</span>
-          <h1 className="heading-primary mb-lg">MICE Tours</h1>
+          <span className="subheading">{banners[2]?.description}</span>
+          <h1 className="heading-primary mb-lg">{banners[2]?.displayName}</h1>
 
-          <div className={styles.mice_content}>
-            <h1 className={styles.mice_title}>Your Business Is Our Pleasure</h1>
+          <div style={miceBannerStyle} className={styles.mice_content} >
+            <h1 className={styles.mice_title}>{banners[2]?.banner_image_urls[0]?.shortDescription}</h1>
             <p className={styles.mice_desc}>
-              MICE (Meetings, Incentives, Conferences, and Exhibitions): Elevate
-              your corporate events with our dedicated MICE services, offering
-              state-of-the-art facilities and tailored support to ensure your
-              meetings, incentives, conferences, and exhibitions are executed
-              flawlessly at Heaven Seven Hotels.
+            {banners[2]?.banner_image_urls[0]?.longDescription}
             </p>
             <Button type="button" variant="primary">
               Explore More

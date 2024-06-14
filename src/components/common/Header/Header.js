@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import styles from "./Header.module.css";
 // import searchIco from '../../../assets/icons/search-ico.svg';
@@ -8,9 +8,21 @@ import { useMenu } from "../../../contexts/MenuContext";
 
 const Header = () => {
   const { toggleMenu } = useMenu();
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 450);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isSticky ? styles.sticky : styles.absolute}`}>
       <div className={styles.container}>
         <div className="left-nav">
           <Button type="button" variant="primary" fullWidth={false} onClick={toggleMenu}>
@@ -38,13 +50,13 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link className={styles.nav_link} to="/blog">
-                Blog
+              <Link className={styles.nav_link} to="/about">
+                About
               </Link>
             </li>
             <li>
-              <Link className={styles.nav_link} to="/about">
-                About
+              <Link className={styles.nav_link} to="/blog">
+                Blog
               </Link>
             </li>
           </ul>

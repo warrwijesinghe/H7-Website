@@ -13,9 +13,10 @@
     padding: 1.8rem 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 944px) {
     .check_rate{ display: none;} 
 }
+
 
 .rate_filter{
     border-right: #D9D9D9 solid 1px;

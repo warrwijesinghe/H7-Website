@@ -1,4 +1,5 @@
 /* global.css */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -95,6 +96,7 @@ button {
     display: grid;
     row-gap: 6.4rem;
     column-gap: 6.4rem;
+    
 }
 
 .col-3 {
@@ -105,6 +107,13 @@ button {
     grid-template-columns: repeat(2, 1fr);
 }
 
+.d-flex{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6.4rem;
+}
+
 .mb-lg {
     margin-bottom: 6rem;
 }
@@ -113,10 +122,24 @@ button {
     margin-bottom: 2rem;
 }
 
+.desktop{
+    display: block;
+}
+
+.mobile{
+    display: none;
+}
+
+@media (max-width: 944px) {
+    html {
+        font-size: 50%;
+    }
+}
+
 @media (max-width: 768px) {
     html {
         /* 8px / 16 = 0.5 = 50% */
-        font-size: 50%;
+        font-size: 48%;
     }
 
     .heading-primary,
@@ -124,4 +147,13 @@ button {
     .heading-tertiary {
         width: 100%;
     }
+
+    .desktop{
+        display: none;
+    }
+    
+    .mobile{
+        display: block;
+    }
 }
+

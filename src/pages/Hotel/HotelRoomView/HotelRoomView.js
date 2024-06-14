@@ -12,7 +12,7 @@ const HotelRoomView = () => {
         <div className="container">
           <div className={styles.room_grid}>
             <img
-              src="https://picsum.photos/400"
+              src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               alt="room banner"
               className={styles.room_banner}
             />
@@ -68,12 +68,12 @@ const HotelRoomView = () => {
 
           <div className="grid col-2">
             <img
-              src="https://picsum.photos/400"
+              src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               alt="room banner"
               className={styles.room_image}
             />
             <img
-              src="https://picsum.photos/400"
+              src="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               alt="room banner"
               className={styles.room_image}
             />
@@ -91,17 +91,17 @@ const HotelRoomView = () => {
 
           <div className="grid col-3">
             <RoomCard
-              cardImage="https://picsum.photos/400"
+              cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               title="Double Dulx Room 01"
               room={104}
             />
             <RoomCard
-              cardImage="https://picsum.photos/400"
+              cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               title="Double Dulx Room 01"
               room={104}
             />
             <RoomCard
-              cardImage="https://picsum.photos/400"
+              cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
               title="Double Dulx Room 01"
               room={104}
             />

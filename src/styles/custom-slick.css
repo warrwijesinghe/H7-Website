@@ -1,0 +1,43 @@
+/* custom-slick.css */
+.slick-slider{
+    margin-bottom: 6rem;
+}
+
+.slick-dots{
+    margin-bottom: -2rem;
+}
+
+.slick-dots li button{
+    padding: 0.01rem;
+}
+
+.slick-dots li {
+    margin: 0 0.2rem;
+}
+
+.slick-dots li button {
+    width: 0.8rem;
+    height: 0.8rem;
+    background-color: #b9b9b9;
+    border-radius: 50%;
+    border: 0;
+    outline: 0.2rem solid transparent;
+    outline-offset: 3px;
+    box-sizing: border-box;
+}
+
+.slick-dots li.slick-active button{
+    border-radius: 50%;
+    outline: 0.2rem solid var(--primary-color);
+    outline-offset: 3px;
+    background-color: var(--primary-color);
+}
+
+.slick-dots li button:before {
+    content: '';
+    
+  }
+  
+  .slick-dots li.slick-active button:before {
+    content: '';
+  }

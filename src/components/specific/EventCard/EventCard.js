@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./EventCard.module.css";
+import defaultImg from '../../../assets/images/default.jpg';
 
 const EventCard = ({ logo , isLeft, children}) => {
     const contentClass = `${styles.event_card_content} ${isLeft ? styles.event_card_left_content : styles.event_card_right_content}`;
@@ -11,7 +12,7 @@ const EventCard = ({ logo , isLeft, children}) => {
         {children}
       </div>
       <div className={imageClass}>
-        <img src={logo} alt="event card" className={styles.event_card_img} />
+        <img src={logo || defaultImg} alt="event card" className={styles.event_card_img} />
       </div>
     </div>
   );

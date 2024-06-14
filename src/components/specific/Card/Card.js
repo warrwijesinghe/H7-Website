@@ -2,9 +2,9 @@ import React from "react";
 import styles from "./Card.module.css";
 import Button from "../../common/Button/Button";
 
-const Card = ({ cardImage, logo, title, subtitle, desc, button = false, tag = false }) => {
+const Card = ({ cardImage, logo, title, subtitle, desc, button = false, tag = false, isFullWidth= false }) => {
   return (
-    <div className={styles.card}>
+    <div className={`${styles.card} ${isFullWidth ? styles.full_width : ''}`}>
       <div className={styles.card_logo}>
         <img
           src={cardImage}
