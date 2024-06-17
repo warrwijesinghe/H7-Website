@@ -37,7 +37,7 @@ const FAQ = () => {
     return <div className={styles.error}>{error}</div>;
   }
 
-  console.log('text', propertyText)
+
   return (
     <div>
       <HeroSection />

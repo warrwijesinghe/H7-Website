@@ -50,8 +50,8 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link className={styles.nav_link} to="/about">
-                About
+              <Link className={styles.nav_link} to="/contact">
+                Contact Us
               </Link>
             </li>
             <li>

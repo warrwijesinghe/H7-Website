@@ -55,6 +55,7 @@
 .card_description {
     font-size: 1.2rem;
     line-height: 1.7;
+    height: 6rem;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
@@ -69,6 +70,7 @@
 .card_tag{
     padding: 0.6rem 1.8rem;
     font-size: 1.8rem;
+    text-transform: uppercase;
     background-color: var(--primary-color);
     color: #fff;
     width: 42%;

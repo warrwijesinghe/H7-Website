@@ -7,15 +7,15 @@ import Partners from "../../components/specific/Partners/Partners";
 import Card from "../../components/specific/Card/Card";
 import HeroSection from "../../components/common/HeroSection/HeroSection";
 import FilterCard from "../../components/specific/FilterCard/FilterCard";
-import { fetchPropertyText, fetchWebBanners } from "../../api/apiClient";
+import { fetchExperiences, fetchPropertyText, fetchWebBanners } from "../../api/apiClient";
 import defaultImg from "../../assets/images/default.jpg";
 import StayUs from "../../components/common/StayUs/StayUs";
 import Carousel from "../../components/specific/Carousel/Carousel";
 
 const Experience = () => {
-  const tours = Array.from({ length: 6 });
   const [propertyText, setPropertyText] = useState(null);
   const [banners, setBanners] = useState(null);
+  const [experiences, setExperiences] = useState(null);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,13 +23,15 @@ const Experience = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [textData, bannerData] = await Promise.all([
+        const [textData, bannerData, experienceData] = await Promise.all([
           fetchPropertyText("Group", "Experiences"),
           fetchWebBanners("Group", "Experiences"),
+          fetchExperiences("Group", "Group"),
         ]);
 
         setPropertyText(textData);
         setBanners(bannerData);
+        setExperiences(experienceData);
       } catch (err) {
         setError("Failed to fetch data");
       } finally {
@@ -49,15 +51,14 @@ const Experience = () => {
   }
 
   const visitBannerStyle = {
-    "background-image": `url('${
+    "backgroundImage": `url('${
       banners[0]?.banner_image_urls[0]?.imgeUrl || defaultImg
     }')`,
-    "background-size": "cover",
-    "background-position": "center center",
+    "backgroundSize": "cover",
+    "backgroundPosition": "center center",
   };
 
-  console.log("text", propertyText);
-  console.log("banner", banners);
+
 
   return (
     <div>
@@ -79,15 +80,16 @@ const Experience = () => {
       <section className={`text-center ${styles.tours_section}`}>
         <div className="container ">
           <div className={`grid col-3 ${styles.mobile_grid}`}>
-            {tours.map((_, index) => (
+            {experiences && experiences.map((item, index) => (
               <Card
                 key={index}
                 logo={logo}
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="Kandy"
-                subtitle="Lorem ipsum dolor sit amet"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
+                cardImage={item.experiences_image_urls[0]?.imgeUrl || defaultImg}
+                title={item.displayName}
+                subtitle={item.shortDescription}
+                desc={item.longDescription}
                 tag={true}
+                tagName={item.experiences_type.type}
                 button={true}
               />
             ))}

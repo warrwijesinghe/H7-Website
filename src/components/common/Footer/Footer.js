@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Footer.module.css";
 import logo from "../../../assets/images/logo-ne.png";
 import apple from "../../../assets/icons/Symbol.svg";
@@ -8,8 +8,40 @@ import intagram from "../../../assets/icons/fill-intagram-ico.svg";
 import linkdin from "../../../assets/icons/fill-linkdin-ico.svg";
 import tweet from "../../../assets/icons/fill-tweet-ico.svg";
 import { Link } from "react-router-dom";
+import { fetchProperty } from "../../../api/apiClient";
 
 const Footer = () => {
+  const [property, setProperty] = useState(null);
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [property] = await Promise.all([fetchProperty("Group")]);
+
+        setProperty(property);
+      } catch (err) {
+        console.log(err);
+        setError("Failed to fetch data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div className={styles.loading}>Loading...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
+  }
+
+
   return (
     <div>
       <footer className={styles.footer_section}>
@@ -22,9 +54,7 @@ const Footer = () => {
                 className={styles.footer_logo}
               />
               <p className={styles.footer_description}>
-                Experience the epitome of hospitality and timeless elegance with
-                Heaven Seven Hotels. Uniting luxury with comfort in spectacular
-                locations, we ensure each visit is uniquely memorable.
+                {property?.shortDescription || ""}
               </p>
             </div>
             <div className={styles.footer_nav_list}>
@@ -131,22 +161,42 @@ const Footer = () => {
             <div className={styles.footer_social_col}>
               <h1 className={styles.footer_title}>Follow us on social media</h1>
               <div className={styles.footer_socials}>
-                <img
-                  src={facebook}
-                  alt="facebook"
-                  className={styles.footer_social}
-                />
-                <img
-                  src={intagram}
-                  alt="intagram"
-                  className={styles.footer_social}
-                />
-                <img
-                  src={linkdin}
-                  alt="linkdin"
-                  className={styles.footer_social}
-                />
-                <img src={tweet} alt="tweet" className={styles.footer_social} />
+                {property?.fb && (
+                  <a href={property?.fb || ""}>
+                    <img
+                      src={facebook}
+                      alt="facebook"
+                      className={styles.footer_social}
+                    />
+                  </a>
+                )}
+                {property?.instagram && (
+                  <a href={property?.instagram || ""}>
+                    <img
+                      src={intagram}
+                      alt="intagram"
+                      className={styles.footer_social}
+                    />
+                  </a>
+                )}
+                {property?.linkedin && (
+                  <a href={property?.linkedin || ""}>
+                    <img
+                      src={linkdin}
+                      alt="linkdin"
+                      className={styles.footer_social}
+                    />
+                  </a>
+                )}
+                {property?.tx && (
+                  <a href={property?.tx || ""}>
+                    <img
+                      src={tweet}
+                      alt="tweet"
+                      className={styles.footer_social}
+                    />
+                  </a>
+                )}
               </div>
             </div>
             <div className={styles.footer_contact_col}>
@@ -155,14 +205,22 @@ const Footer = () => {
                   <h2 className={styles.footer_contact_title}>
                     Total Free Customer Care
                   </h2>
-                  <p className={styles.footer_contact_number}>
-                    +(088) 123 456 789
-                  </p>
+                  <a
+                    href={`tel:${property?.hotline || ""}`}
+                    className={styles.footer_contact_number}
+                  >
+                    {property?.hotline}
+                  </a>
                 </div>
 
                 <div className={styles.footer_contact}>
                   <h2 className={styles.footer_contact_title}>Live Support?</h2>
-                  <p className={styles.footer_contact_number}>hi@homez.com</p>
+                  <a
+                    href={`mailto:${property?.email || ""}`}
+                    className={styles.footer_contact_number}
+                  >
+                    {property?.email}
+                  </a>
                 </div>
               </div>
             </div>
@@ -178,7 +236,7 @@ const Footer = () => {
             <li>Sitemap</li>
           </ul>
           <div className={styles.copyright_language}>
-          <div id="google_translate_element"></div>
+            <div id="google_translate_element"></div>
           </div>
         </div>
       </div>

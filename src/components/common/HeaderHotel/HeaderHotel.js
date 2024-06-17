@@ -9,6 +9,7 @@ import { useMenu } from "../../../contexts/MenuContext";
 const HeaderHotel = () => {
   const { toggleMenu } = useMenu();
   let { hotel } = useParams();
+  
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {

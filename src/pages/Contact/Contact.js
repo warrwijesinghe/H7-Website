@@ -5,11 +5,12 @@ import StayUs from "../../components/common/StayUs/StayUs";
 import Partners from "../../components/specific/Partners/Partners";
 import Button from "../../components/common/Button/Button";
 import ContactForm from "../../components/specific/ContactForm/ContactForm";
-import { fetchProperties, fetchPropertyText } from "../../api/apiClient";
+import { fetchProperties, fetchProperty, fetchPropertyText } from "../../api/apiClient";
 
 const Contact = () => {
   const [propertyText, setPropertyText] = useState(null);
   const [properties, setProperties] = useState(null);
+  const [property, setProperty] = useState(null);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -17,13 +18,15 @@ const Contact = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [textData, propertiesData] = await Promise.all([
+        const [textData, propertiesData, property] = await Promise.all([
           fetchPropertyText("Group", "Contact Us"),
           fetchProperties(),
+          fetchProperty("Group"),
         ]);
 
         setPropertyText(textData);
         setProperties(propertiesData.filter((item) => item.id !== 14));
+        setProperty(property);
       } catch (err) {
         setError("Failed to fetch data");
       } finally {
@@ -42,8 +45,7 @@ const Contact = () => {
     return <div className={styles.error}>{error}</div>;
   }
 
-  console.log("text", propertyText);
-  console.log("properties", properties);
+
 
   return (
     <div className={styles.contact_component}>
@@ -62,7 +64,7 @@ const Contact = () => {
         <div className="container text-center">
           <div className={styles.map}>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.4070111965875!2d80.76191997412151!3d6.961220593039239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae38054d4cc649f%3A0xfb3cd8f551d1d8dc!2sHeaven%20Seven%20Nuwara%20Eliya!5e0!3m2!1sen!2slk!4v1716724373876!5m2!1sen!2slk"
+              src={property?.map || ''}
               title="Map of Heaven Seven Nuwara Eliya"
               loading="lazy"
               className={styles.iframe_map}
@@ -72,37 +74,37 @@ const Contact = () => {
               <h4 className={styles.contact_detail_title}>General Inquiries</h4>
               <h6 className={styles.contact_detail_subtitle}>Address</h6>
               <p className={styles.contact_detail_desc}>
-                25/8 Sangaraja Mawatha, Hillwood College Road, Kandy.
+              {property?.address || ''}
               </p>
 
               <h6 className={styles.contact_detail_subtitle}>Email</h6>
-              <p className={styles.contact_detail_desc}>
-                info@heavensevenhotels.com
-              </p>
+              <a href={`mailto:${property?.email || ''}`} className={styles.contact_detail_desc}>
+              {property?.email || ''}
+              </a>
 
               <div className={styles.contact_groups}>
                 <div className={styles.contact_group}>
                   <h6 className={styles.contact_detail_subtitle}>
                     Front Office
                   </h6>
-                  <p className={styles.contact_detail_desc}>
-                    (+94) 814 954 234
-                  </p>
+                  <a href={`tel:${property?.hotline || ''}`} className={styles.contact_detail_desc}>
+                  {property?.hotline || ''}
+                  </a>
                 </div>
                 <div className={styles.contact_group}>
                   <h6 className={styles.contact_detail_subtitle}>Accounts</h6>
-                  <p className={styles.contact_detail_desc}>
-                    (+94) 814 954 243
-                  </p>
+                  <a href={`tel:${property?.hotline || ''}`} className={styles.contact_detail_desc}>
+                  {property?.hotline || ''}
+                  </a>
                 </div>
                 <div className={styles.contact_group}>
                   <h6 className={styles.contact_detail_subtitle}>Hotline</h6>
-                  <p className={styles.contact_detail_desc}>
-                    (+94) 770 049 528
-                  </p>
-                  <p className={styles.contact_detail_desc}>
-                    (+94) 770 049 566
-                  </p>
+                  <a href={`tel:${property?.hotline || ''}`} className={styles.contact_detail_desc}>
+                  {property?.hotline || ''}
+                  </a>
+                  <a href={`tel:${property?.whatsApp || ''}`} className={styles.contact_detail_desc}>
+                  {property?.whatsApp || ''}
+                  </a>
                 </div>
               </div>
             </div>

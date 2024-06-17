@@ -2,13 +2,14 @@ import React from "react";
 import styles from "./OfferCard.module.css";
 import Button from "../../common/Button/Button";
 import offerIco from "../../../assets/images/offer.png";
+import defaultImg from "../../../assets/images/default.jpg";
 
-const OfferCard = ({ cardImage, title, desc }) => {
+const OfferCard = ({ cardImage, title, desc, valid }) => {
   return (
     <div className={styles.offer_card}>
       <div className={styles.offer_card_logo}>
         <img
-          src={cardImage}
+          src={cardImage || defaultImg}
           alt="Haven Seven Hotels"
           className={styles.offer_card_image}
         />
@@ -35,7 +36,7 @@ const OfferCard = ({ cardImage, title, desc }) => {
           </Button>
         </div>
 
-        <p className={styles.offer_card_valid}>Valid 12th April 20th April</p>
+        <p className={styles.offer_card_valid}>Valid {valid}</p>
       </div>
     </div>
   );

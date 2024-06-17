@@ -8,7 +8,12 @@ import OfferCard from "../../components/specific/OfferCard/OfferCard";
 import Partners from "../../components/specific/Partners/Partners";
 import InfoCard from "../../components/specific/InfoCard/InfoCard";
 import HeroSection from "../../components/common/HeroSection/HeroSection";
-import { fetchProperties, fetchPropertyText, fetchWebBanners } from "../../api/apiClient";
+import {
+  fetchOffers,
+  fetchProperties,
+  fetchPropertyText,
+  fetchWebBanners,
+} from "../../api/apiClient";
 import Carousel from "../../components/specific/Carousel/Carousel";
 import StayUs from "../../components/common/StayUs/StayUs";
 
@@ -16,6 +21,7 @@ const Hotels = () => {
   const [propertyText, setPropertyText] = useState(null);
   const [properties, setProperties] = useState(null);
   const [banners, setBanners] = useState(null);
+  const [offers, setOffers] = useState(null);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,15 +29,18 @@ const Hotels = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [textData, propertiesData, bannerData] = await Promise.all([
-          fetchPropertyText("Group", "Hotels"),
-          fetchProperties(),
-          fetchWebBanners("Group", "Hotels"),
-        ]);
+        const [textData, propertiesData, bannerData, offerData] =
+          await Promise.all([
+            fetchPropertyText("Group", "Hotels"),
+            fetchProperties(),
+            fetchWebBanners("Group", "Hotels"),
+            fetchOffers("Group", "Group"),
+          ]);
 
         setPropertyText(textData);
         setProperties(propertiesData.filter((item) => item.id !== 14));
         setBanners(bannerData);
+        setOffers(offerData);
       } catch (err) {
         setError("Failed to fetch data");
       } finally {
@@ -50,8 +59,7 @@ const Hotels = () => {
     return <div className={styles.error}>{error}</div>;
   }
 
-  console.log("text", propertyText);
-  console.log("banner", banners);
+
 
   return (
     <div>
@@ -90,38 +98,38 @@ const Hotels = () => {
 
       <section className={styles.why_stay_section}>
         <div className="container text-center">
-          <span className="subheading">{banners[0]?.description || ''}</span>
-          <h1 className="heading-primary mb-lg">{banners[0]?.displayName || ''}</h1>
+          <span className="subheading">{banners[0]?.description || ""}</span>
+          <h1 className="heading-primary mb-lg">
+            {banners[0]?.displayName || ""}
+          </h1>
 
           <div className="desktop">
             <div className={`grid col-3 ${styles.mobile_grid}`}>
-            {banners &&
-              banners[0].banner_image_urls
-              .map((item, index) => (
-                <InfoCard
-                logo={item.imgeUrl}
-                alt={item.imgAlt}
-                count={'0'+(index+1)}
-                title={item.shortDescription}
-                desc={item.longDescription}
-              />
+              {banners &&
+                banners[0].banner_image_urls.map((item, index) => (
+                  <InfoCard
+                    key={index}
+                    logo={item.imgeUrl}
+                    alt={item.imgAlt}
+                    count={"0" + (index + 1)}
+                    title={item.shortDescription}
+                    desc={item.longDescription}
+                  />
                 ))}
-              
-              
             </div>
           </div>
           <div className="mobile">
             <Carousel>
-            {banners &&
-              banners[0].banner_image_urls
-              .map((item, index) => (
-                <InfoCard
-                logo={item.imgeUrl}
-                alt={item.imgAlt}
-                count={'0'+(index+1)}
-                title={item.shortDescription}
-                desc={item.longDescription}
-              />
+              {banners &&
+                banners[0].banner_image_urls.map((item, index) => (
+                  <InfoCard
+                    key={index}
+                    logo={item.imgeUrl}
+                    alt={item.imgAlt}
+                    count={"0" + (index + 1)}
+                    title={item.shortDescription}
+                    desc={item.longDescription}
+                  />
                 ))}
             </Carousel>
           </div>
@@ -134,9 +142,11 @@ const Hotels = () => {
             logo={banners[1]?.banner_image_urls[0]?.imgeUrl}
             isLeft={true}
           >
-            <h1 className={styles.book_info_title}>{banners[1]?.displayName || ''}</h1>
+            <h1 className={styles.book_info_title}>
+              {banners[1]?.displayName || ""}
+            </h1>
             <p className={styles.book_info_description}>
-            {banners[1]?.description || ''}
+              {banners[1]?.description || ""}
             </p>
             <Button type="button" variant="primary">
               Book Now
@@ -152,40 +162,30 @@ const Hotels = () => {
 
           <div className="desktop">
             <div className={`grid col-3 ${styles.mobile_grid}`}>
-              <OfferCard
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="A Limited Time Hikkaduwa"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
-              <OfferCard
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="A Limited Time Hikkaduwa"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
-              <OfferCard
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="A Limited Time Hikkaduwa"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
+              {offers &&
+                offers.map((item, index) => (
+                  <OfferCard
+                    key={index}
+                    cardImage={item.offer_image_urls[0]?.imgeUrl}
+                    title={item.displayName}
+                    desc={item.longDescription}
+                    valid={item.validityText}
+                  />
+                ))}
             </div>
           </div>
           <div className="mobile">
             <Carousel>
-              <OfferCard
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="A Limited Time Hikkaduwa"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
-              <OfferCard
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="A Limited Time Hikkaduwa"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
-              <OfferCard
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="A Limited Time Hikkaduwa"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
+              {offers &&
+                offers.map((item, index) => (
+                  <OfferCard
+                    key={index}
+                    cardImage={item.offer_image_urls[0]?.imgeUrl}
+                    title={item.displayName}
+                    desc={item.longDescription}
+                    valid={item.validityText}
+                  />
+                ))}
             </Carousel>
           </div>
         </div>

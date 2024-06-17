@@ -21,11 +21,14 @@ import "../../styles/custom-slick.css";
 import { Link } from "react-router-dom";
 import HeroSection from "../../components/common/HeroSection/HeroSection";
 import {
+  fetchExperiences,
+  fetchOffers,
   fetchProperties,
   fetchPropertyImage,
   fetchPropertyText,
   fetchWebBanners,
 } from "../../api/apiClient";
+import defaultImg from "../../assets/images/default.jpg";
 
 const Home = () => {
   const settings = {
@@ -42,26 +45,42 @@ const Home = () => {
   const [propertyImages, setPropertyImages] = useState(null);
   const [properties, setProperties] = useState(null);
   const [banners, setBanners] = useState(null);
+  const [experiences, setExperiences] = useState(null);
+  const [offers, setOffers] = useState(null);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    console.log('useEffect triggered');
     const fetchData = async () => {
+      console.log('fetchData function called');
       try {
-        const [textData, imageData, propertiesData, webBanner] = await Promise.all([
+        const [
+          textData,
+          imageData,
+          propertiesData,
+          webBanner,
+          experienceData,
+          offerData,
+        ] = await Promise.all([
           fetchPropertyText("Group", "Home"),
           fetchPropertyImage("Group", "Gallery", "Gallery", 10),
           fetchProperties(),
           fetchWebBanners("Group", "Home"),
+          fetchExperiences("Group", "Group"),
+          fetchOffers("Group", "Group"),
         ]);
 
         setPropertyText(textData);
         setPropertyImages(imageData);
         setProperties(propertiesData.filter((item) => item.id !== 14));
         setBanners(webBanner);
+        setExperiences(experienceData);
+        setExperiences(experienceData);
+        setOffers(offerData);
       } catch (err) {
-        console.log(err)
+        console.log(err);
         setError("Failed to fetch data");
       } finally {
         setLoading(false);
@@ -79,10 +98,7 @@ const Home = () => {
     return <div className={styles.error}>{error}</div>;
   }
 
-  console.log("text", propertyText);
-  console.log("images", propertyImages);
-  console.log("properties", properties);
-  console.log("banner", banners);
+  console.log("offers", offers);
 
   return (
     <div>
@@ -164,16 +180,18 @@ const Home = () => {
         <div className="container">
           <div className={styles.experience}>
             <div className="experience_content">
-              <h2 className={styles.experience_heading}>{banners[0]?.displayName || ''}</h2>
+              <h2 className={styles.experience_heading}>
+                {banners[0]?.displayName || ""}
+              </h2>
               <p className={styles.experience_description}>
-              {banners[0]?.description || ''}
+                {banners[0]?.description || ""}
               </p>
               <Button type="button" variant="primary">
-              <Link to={'/experience'}>Explore More</Link>
+                <Link to={"/experience"}>Explore More</Link>
               </Button>
             </div>
             <div className={styles.experience_slider}>
-              <SliderLeft />
+              <SliderLeft experiences={experiences} />
             </div>
           </div>
         </div>
@@ -181,43 +199,32 @@ const Home = () => {
       <section className={styles.experience_section_mobile}>
         <div className="container text-center">
           <div className="experience_content">
-            <h2 className={styles.experience_heading}>{banners[0]?.displayName || ''}</h2>
+            <h2 className={styles.experience_heading}>
+              {banners[0]?.displayName || ""}
+            </h2>
             <p className={styles.experience_description}>
-            {banners[0]?.description || ''}
+              {banners[0]?.description || ""}
             </p>
           </div>
           <div>
             <Slider {...settings}>
-              <Card
-                logo={logo}
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="Kandy"
-                subtitle="Lorem ipsum dolor sit amet"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-                tag={true}
-                button={true}
-                isFullWidth={true}
-              />
-              <Card
-                logo={logo}
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="Kandy"
-                subtitle="Lorem ipsum dolor sit amet"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-                tag={true}
-                button={true}
-                isFullWidth={true}
-              />
-              <Card
-                logo={logo}
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="Kandy"
-                subtitle="Lorem ipsum dolor sit amet"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-                tag={true}
-                button={true}
-                isFullWidth={true}
-              />
+              {experiences &&
+                experiences.map((item, index) => (
+                  <Card
+                    key={index}
+                    logo={logo}
+                    cardImage={
+                      item.experiences_image_urls[0]?.imgeUrl || defaultImg
+                    }
+                    title={item.displayName}
+                    subtitle={item.shortDescription}
+                    desc={item.longDescription}
+                    tag={true}
+                    tagName={item.experiences_type.type}
+                    button={true}
+                    isFullWidth={true}
+                  />
+                ))}
             </Slider>
           </div>
         </div>
@@ -228,40 +235,30 @@ const Home = () => {
           <h1 className="heading-primary mb-lg">Special Offers</h1>
           <div className="desktop">
             <div className={`grid col-3 ${styles.mobile_grid}`}>
-              <OfferCard
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="A Limited Time Hikkaduwa"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
-              <OfferCard
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="A Limited Time Hikkaduwa"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
-              <OfferCard
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="A Limited Time Hikkaduwa"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
+              {offers &&
+                offers.map((item, index) => (
+                  <OfferCard
+                    key={index}
+                    cardImage={item.offer_image_urls[0]?.imgeUrl}
+                    title={item.displayName}
+                    desc={item.longDescription}
+                    valid={item.validityText}
+                  />
+                ))}
             </div>
           </div>
           <div className={`mobile`}>
             <Slider {...settings}>
-              <OfferCard
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="A Limited Time Hikkaduwa"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
-              <OfferCard
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="A Limited Time Hikkaduwa"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
-              <OfferCard
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="A Limited Time Hikkaduwa"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
+            {offers &&
+                offers.map((item, index) => (
+                  <OfferCard
+                    key={index}
+                    cardImage={item.offer_image_urls[0]?.imgeUrl}
+                    title={item.displayName}
+                    desc={item.longDescription}
+                    valid={item.validityText}
+                  />
+                ))}
             </Slider>
           </div>
 
@@ -280,10 +277,10 @@ const Home = () => {
             isLeft={true}
           >
             <h1 className={styles.mice_card_title}>
-              {banners[1]?.banner_image_urls[0]?.shortDescription || ''}
+              {banners[1]?.banner_image_urls[0]?.shortDescription || ""}
             </h1>
             <p className={styles.mice_card_description}>
-            {banners[1]?.banner_image_urls[0]?.longDescription || ''}
+              {banners[1]?.banner_image_urls[0]?.longDescription || ""}
             </p>
             <Button type="button" variant="primary">
               Explore More

@@ -9,12 +9,14 @@
 .slide {
     width: 28rem;
     height: 42rem;
+    transition: all 1s ease-in-out;
 }
 
 .next_slide {
     width: 24rem;
     height: 34rem;
     border-radius: 0.4rem;
+    transition: all 1s ease-in-out;
 }
 
 .next_slider_image {

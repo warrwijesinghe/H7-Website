@@ -6,11 +6,11 @@ import Partners from "../../components/specific/Partners/Partners";
 import Card from "../../components/specific/Card/Card";
 import logo from "../../assets/images/logo-ne.png";
 import Button from "../../components/common/Button/Button";
-import { fetchProperties, fetchPropertyText, fetchWebBanners } from "../../api/apiClient";
+import { fetchProperties, fetchWebBanners } from "../../api/apiClient";
 import defaultImg from '../../assets/images/default.jpg';
 
 const About = () => {
-  const [propertyText, setPropertyText] = useState(null);
+  // const [propertyText, setPropertyText] = useState(null);
   const [properties, setProperties] = useState(null);
   const [banners, setBanners] = useState(null);
 
@@ -20,13 +20,13 @@ const About = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [textData, propertiesData, bannerData] = await Promise.all([
-          fetchPropertyText('Group', 'Home'),
+        const [ propertiesData, bannerData] = await Promise.all([
+          // fetchPropertyText('Group', 'Home'),
           fetchProperties(),
           fetchWebBanners("Group", "About"),
         ]);
 
-        setPropertyText(textData);
+        // setPropertyText(textData);
         setProperties(propertiesData.filter(item => item.id !== 14));
         setBanners(bannerData);
       } catch (err) {
@@ -47,9 +47,7 @@ const About = () => {
     return <div className={styles.error}>{error}</div>;
   }
 
-  console.log('text', propertyText);
-  console.log('properties', properties);
-  console.log('banners', banners);
+
 
   const miceBannerStyle = {
     'background': 

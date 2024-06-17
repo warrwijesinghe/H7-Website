@@ -8,16 +8,22 @@ import OfferCard from "../../../components/specific/OfferCard/OfferCard";
 import Partners from "../../../components/specific/Partners/Partners";
 import Carousel from "../../../components/specific/Carousel/Carousel";
 import { useParams } from "react-router-dom";
-import { fetchPropertyText, fetchWebBanners } from "../../../api/apiClient";
-import defaultImg from '../../../assets/images/default.jpg';
+import {
+  fetchExperiences,
+  fetchOffers,
+  fetchPropertyText,
+  fetchWebBanners,
+} from "../../../api/apiClient";
+import defaultImg from "../../../assets/images/default.jpg";
 import FilterCard from "../../../components/specific/FilterCard/FilterCard";
 
 const HotelExperiences = () => {
   let { hotel } = useParams();
 
-  const tours = Array.from({ length: 6 });
   const [propertyText, setPropertyText] = useState(null);
   const [banners, setBanners] = useState(null);
+  const [experiences, setExperiences] = useState(null);
+  const [offers, setOffers] = useState(null);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -25,13 +31,18 @@ const HotelExperiences = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [textData, bannerData] = await Promise.all([
-          fetchPropertyText(hotel, "Experiences"),
-          fetchWebBanners(hotel, "Experiences"),
-        ]);
+        const [textData, bannerData, experienceData, offerData] =
+          await Promise.all([
+            fetchPropertyText(hotel, "Experiences"),
+            fetchWebBanners(hotel, "Experiences"),
+            fetchExperiences(hotel, "Group"),
+            fetchOffers("Group", "Group"),
+          ]);
 
         setPropertyText(textData);
         setBanners(bannerData);
+        setExperiences(experienceData);
+        setOffers(offerData);
       } catch (err) {
         setError("Failed to fetch data");
       } finally {
@@ -51,15 +62,14 @@ const HotelExperiences = () => {
   }
 
   const visitBannerStyle = {
-    "background-image": `url('${
+    backgroundImage: `url('${
       banners[0]?.banner_image_urls[0]?.imgeUrl || defaultImg
     }')`,
-    "background-size": "cover",
-    "background-position": "center center",
+    backgroundSize: "cover",
+    backgroundPosition: "center center",
   };
 
-  console.log("text", propertyText);
-  console.log("banner", banners);
+
 
   return (
     <div>
@@ -81,18 +91,22 @@ const HotelExperiences = () => {
       <section className={`text-center ${styles.tours_section}`}>
         <div className="container ">
           <div className={`grid col-3 ${styles.mobile_grid}`}>
-            {tours.map((_, index) => (
-              <Card
-                key={index}
-                logo={logo}
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="Kandy"
-                subtitle="Lorem ipsum dolor sit amet"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-                tag={true}
-                button={true}
-              />
-            ))}
+            {experiences &&
+              experiences.map((item, index) => (
+                <Card
+                  key={index}
+                  logo={logo}
+                  cardImage={
+                    item.experiences_image_urls[0]?.imgeUrl || defaultImg
+                  }
+                  title={item.displayName}
+                  subtitle={item.shortDescription}
+                  desc={item.longDescription}
+                  tag={true}
+                  tagName={item.experiences_type.type}
+                  button={true}
+                />
+              ))}
           </div>
         </div>
       </section>
@@ -104,40 +118,30 @@ const HotelExperiences = () => {
 
           <div className="desktop">
             <div className={`grid col-3 ${styles.mobile_grid}`}>
-              <OfferCard
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="A Limited Time Hikkaduwa"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
-              <OfferCard
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="A Limited Time Hikkaduwa"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
-              <OfferCard
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="A Limited Time Hikkaduwa"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
+              {offers &&
+                offers.map((item, index) => (
+                  <OfferCard
+                    key={index}
+                    cardImage={item.offer_image_urls[0]?.imgeUrl}
+                    title={item.displayName}
+                    desc={item.longDescription}
+                    valid={item.validityText}
+                  />
+                ))}
             </div>
           </div>
           <div className="mobile">
             <Carousel>
-              <OfferCard
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="A Limited Time Hikkaduwa"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
-              <OfferCard
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="A Limited Time Hikkaduwa"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
-              <OfferCard
-                cardImage="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"
-                title="A Limited Time Hikkaduwa"
-                desc="Lorem ipsum dolor sit amet, sed do eiualiquip consectetur adipiscing elit, sed do eiualiquip ex ea commodo sed do eiualiquip sed do eiualiquip"
-              />
+              {offers &&
+                offers.map((item, index) => (
+                  <OfferCard
+                    key={index}
+                    cardImage={item.offer_image_urls[0]?.imgeUrl}
+                    title={item.displayName}
+                    desc={item.longDescription}
+                    valid={item.validityText}
+                  />
+                ))}
             </Carousel>
           </div>
         </div>

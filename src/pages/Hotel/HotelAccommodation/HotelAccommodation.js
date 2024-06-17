@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./HotelAccommodation.module.css";
 import HeroSection from "../../../components/common/HeroSection/HeroSection";
 import AccommodationCard from "../../../components/specific/AccommodationCard/AccommodationCard";
@@ -6,28 +6,53 @@ import StayUs from "../../../components/common/StayUs/StayUs";
 import Button from "../../../components/common/Button/Button";
 import RoomCard from "../../../components/specific/RoomCard/RoomCard";
 import Carousel from "../../../components/specific/Carousel/Carousel";
+import { fetchPropertyText } from "../../../api/apiClient";
+import { useParams } from "react-router-dom";
 
 const HotelAccommodation = () => {
+  let { hotel } = useParams();
+
+  const [propertyText, setPropertyText] = useState(null);
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [textData] = await Promise.all([
+          fetchPropertyText(hotel, "Accommodation"),
+        ]);
+
+        setPropertyText(textData);
+      } catch (err) {
+        setError("Failed to fetch data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [hotel]);
+
+  if (loading) {
+    return <div className={styles.loading}>Loading...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
+  }
+
+
   return (
     <div>
       <HeroSection />
 
       <section className={styles.welcome_section}>
         <div className="container text-center">
-          <h1 className="heading-secondary">Accommodation</h1>
+          <h1 className="heading-secondary">{propertyText?.welcome_Header?.text || ""}</h1>
           <p className="description mb-sm">
-            "Welcome to Heaven Seven, where luxury meets the breathtaking beauty
-            of Nuwara Eliya. Nestled amidst the misty hills of Sri Lanka's hill
-            country, our hotel offers an unparalleled retreat for discerning
-            travelers. Each of our meticulously designed accommodations reflects
-            a harmonious blend of modern elegance and colonial charm, providing
-            a sanctuary of comfort and tranquility. Wake up to panoramic views
-            of lush tea plantations and rolling hills, and indulge in
-            world-class amenities and personalized service throughout your stay.
-            Whether you're here to explore the wonders of Nuwara Eliya or simply
-            relax and rejuvenate amidst nature's splendor, Heaven Seven invites
-            you to experience the epitome of luxury in the heart of Sri Lanka's
-            hill station paradise."
+          {propertyText?.welcome_paragraph_1?.text || ""}
           </p>
           <AccommodationCard
             logo="http://mdev.miracleclouds.com/heaven-seven/web/images/heaven-seven.jpg"

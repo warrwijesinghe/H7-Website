@@ -52,8 +52,6 @@ const Gallery = () => {
     return <div className={styles.error}>{error}</div>;
   }
 
-  console.log("text", propertyText);
-  console.log("image", propertyImages);
 
   return (
     <div>
